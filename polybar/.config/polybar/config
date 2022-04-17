@@ -1,0 +1,207 @@
+[color]
+background = #6f1f1f1f
+background-alt = #6f6f6f6f
+foreground = #ffffffff
+foreground-alt = #8f8f8f
+module-fg = #1f1f1f
+primary = #ffb300
+secondary = #e53935
+alternate = #7cb342
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+[bar/main]
+monitor = ${env:MONITOR:}
+monitor-fallback =
+monitor-strict = 
+override-redirect = false
+
+bottom = false
+fixed-center = true
+
+width = 100%
+height = 24
+
+background = ${color.background}
+foreground = ${color.foreground}
+
+radius-top = 0.0
+radius-bottom = 0.0
+
+line-size = 2
+line-color = ${color.primary}
+
+border-size = 3
+border-color = ${color.background}
+
+padding = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Fira Code Nerd Font:pixelsize=13:weight=medium;4"
+
+modules-left = i3 xwindow
+modules-center =
+modules-right = temp pulseaudio date powermenu
+
+separator =
+
+dim-value = 1.0
+
+wm-name =
+
+locale = en_US.UTF-8
+
+enable-ipc = true
+
+click-left = 
+click-middle = 
+click-right =
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+double-click-left =
+double-click-middle =
+double-click-right =
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+
+screenchange-reload = false
+
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+pseudo-transparency = false
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = false
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${color.secondary}
+
+label-focused = %index%
+label-focused-foreground = ${color.foreground}
+label-focused-background = ${color.background-alt}
+label-focused-underline = ${color.primary}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-underline = ${color.primary}
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = ${color.secondary}
+label-urgent-padding = 2
+
+label-separator =
+label-separator-padding = 0
+label-separator-foreground =
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:32:...%
+
+[module/powermenu]
+
+type = custom/menu
+expand-right = false
+
+format-spacing = 1
+
+label-open = "  "
+label-open-foreground = ${color.foreground}
+label-close = "Close "
+label-close-foreground = ${color.foreground-alt}
+label-separator = "|"
+label-separator-foreground = ${color.primary}
+
+menu-0-0 = "Reboot"
+menu-0-0-exec = menu-open-1
+menu-0-1 = "Power off"
+menu-0-1-exec = menu-open-2
+menu-0-2 = "Log out"
+menu-0-2-exec = menu-open-3
+menu-0-3 = "Lock screen"
+menu-0-3-exec = i3lock -ntefi /usr/share/backgrounds/wallhaven-farcry5-lock.png
+
+menu-1-0 = "Reboot"
+menu-1-0-exec = reboot
+menu-1-1 = "Cancel"
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = "Power off"
+menu-2-0-exec = poweroff
+menu-2-1 = "Cancel"
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = "Log out"
+menu-3-0-exec = i3-msg exit
+menu-3-1 = "Cancel"
+menu-3-1-exec = menu-open-0
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = "%a %b %d"
+time = "%l:%M:%S %p"
+label = "%date% %time%"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink =
+
+use-ui-max = true
+
+label-volume = %percentage%%
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = ﱝ Muted
+label-muted-foreground = ${color.secondary}
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+ramp-volume-3 = 
+
+click-middle = exec ~/.config/polybar/pa-sink-toggle.sh
+click-right = exec pavucontrol &
+
+[module/temp]
+type = internal/temperature
+interval = 1
+thermal-zone = 1
+
+units = true
+format = <label>
+label = %temperature-c%
+label-warn-foreground = ${color.secondary}
+
+; vim:ft=dosini
