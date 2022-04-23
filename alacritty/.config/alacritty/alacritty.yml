@@ -4,6 +4,9 @@ window:
   decorations: full
   opacity: 0.85
 
+env:
+  TERM: xterm-256color
+
 font:
   normal:
     family: Cascadia Code
@@ -76,11 +79,11 @@ key_bindings:
   - { key: D,       mods: Alt,            chars: "\x02\x25"         }
   - { key: D,       mods: Control|Alt,    chars: "\x02\x22"         }
   - { key: Space,   mods: Super,          chars: "\x02\x20"         }
-  - { key: Up,      mods: Control|Super,  chars: "\x02\x1b[A"       }
-  - { key: Down,    mods: Control|Super,  chars: "\x02\x1b[B"       }
-  - { key: Right,   mods: Control|Super,  chars: "\x02\x1b[C"       }
-  - { key: Left,    mods: Control|Super,  chars: "\x02\x1b[D"       }
-  - { key: Up,      mods: Shift|Super,    chars: "\x02\x1b[1;2A"    }
-  - { key: Down,    mods: Shift|Super,    chars: "\x02\x1b[1;2B"    }
-  - { key: Right,   mods: Shift|Super,    chars: "\x02\x1b[1;2C"    }
-  - { key: Left,    mods: Shift|Super,    chars: "\x02\x1b[1;2D"    }
+  - { key: Up,      mods: Control|Alt,    chars: "\x02\x1b[A"       }
+  - { key: Down,    mods: Control|Alt,    chars: "\x02\x1b[B"       }
+  - { key: Right,   mods: Control|Alt,    chars: "\x02\x1b[C"       }
+  - { key: Left,    mods: Control|Alt,    chars: "\x02\x1b[D"       }
+  - { key: Up,      mods: Shift|Alt,      chars: "\x02\x1b[1;2A"    }
+  - { key: Down,    mods: Shift|Alt,      chars: "\x02\x1b[1;2B"    }
+  - { key: Right,   mods: Shift|Alt,      chars: "\x02\x1b[1;2C"    }
+  - { key: Left,    mods: Shift|Alt,      chars: "\x02\x1b[1;2D"    }
