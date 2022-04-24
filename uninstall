@@ -3,8 +3,8 @@
 pushd $(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
 for f in $(ls -d */ | cut -f1 -d '/'); do
-	echo "Installing dotfiles for: $f"
-	stow -R $f
+	echo "Uninstalling dotfiles for: $f"
+	stow -D $f
 done
 
 popd
