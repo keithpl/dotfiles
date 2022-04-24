@@ -10,8 +10,10 @@ env:
 font:
   size: 13
   use_thin_strokes: true
+
   normal:
     family: Cascadia Code
+    style: Medium
 
   offset:
     x: 0
