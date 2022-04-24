@@ -24,13 +24,24 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-alias ip='ip -color=auto'
-alias ls='ls -Fv --group-directories-first --color=auto'
-alias dmesg='dmesg --color=always'
 alias history='history -i'
 
-# Launch weechat in a jail.
-alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
+case "$OSTYPE" in
+linux*)
+	alias ip='ip -color=auto'
+	alias ls='ls -Fv --group-directories-first --color=auto'
+	alias dmesg='dmesg --color=always'
+	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
+	;;
+darwin*)
+	alias ls='ls -Fv --color=auto'
+
+	function brewup() {
+		brew cleanup
+		brew doctor && brew update && brew upgrade
+	}
+	;;
+esac
 
 # Launch tmux if not already running within tmux.
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux; fi
