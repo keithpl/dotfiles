@@ -41,7 +41,7 @@ padding = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "Fira Code Nerd Font:pixelsize=13:weight=medium;4"
+font-0 = "CaskaydiaCove Nerd Font:pixelsize=15:weight=medium:antialias=true;4"
 
 modules-left = i3 xwindow
 modules-center =
