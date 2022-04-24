@@ -2,17 +2,16 @@ window:
   title: Alacritty
   dynamic_title: true
   decorations: full
-  opacity: 0.85
+  opacity: 0.80
 
 env:
   TERM: xterm-256color
 
 font:
+  size: 13
+  use_thin_strokes: true
   normal:
     family: Cascadia Code
-    style: Medium
-
-  size: 13
 
   offset:
     x: 0
@@ -62,28 +61,28 @@ colors:
     text: '#000000'
 
 key_bindings:
-  - { key: T,       mods: Alt,            chars: "\x02\x63"         }
-  - { key: Key0,    mods: Alt,            chars: "\x02\x30"         }
-  - { key: Key1,    mods: Alt,            chars: "\x02\x31"         }
-  - { key: Key2,    mods: Alt,            chars: "\x02\x32"         }
-  - { key: Key3,    mods: Alt,            chars: "\x02\x33"         }
-  - { key: Key4,    mods: Alt,            chars: "\x02\x34"         }
-  - { key: Key5,    mods: Alt,            chars: "\x02\x35"         }
-  - { key: Key6,    mods: Alt,            chars: "\x02\x36"         }
-  - { key: Key7,    mods: Alt,            chars: "\x02\x37"         }
-  - { key: Key8,    mods: Alt,            chars: "\x02\x38"         }
-  - { key: Key9,    mods: Alt,            chars: "\x02\x39"         }
-  - { key: Left,    mods: Alt,            chars: "\x02\x70"         }
-  - { key: Right,   mods: Alt,            chars: "\x02\x6e"         }
+  - { key: T,       mods: Alt,            chars: "\x01\x63"         }
+  - { key: Key0,    mods: Alt,            chars: "\x01\x30"         }
+  - { key: Key1,    mods: Alt,            chars: "\x01\x31"         }
+  - { key: Key2,    mods: Alt,            chars: "\x01\x32"         }
+  - { key: Key3,    mods: Alt,            chars: "\x01\x33"         }
+  - { key: Key4,    mods: Alt,            chars: "\x01\x34"         }
+  - { key: Key5,    mods: Alt,            chars: "\x01\x35"         }
+  - { key: Key6,    mods: Alt,            chars: "\x01\x36"         }
+  - { key: Key7,    mods: Alt,            chars: "\x01\x37"         }
+  - { key: Key8,    mods: Alt,            chars: "\x01\x38"         }
+  - { key: Key9,    mods: Alt,            chars: "\x01\x39"         }
+  - { key: Left,    mods: Alt,            chars: "\x01\x70"         }
+  - { key: Right,   mods: Alt,            chars: "\x01\x6e"         }
 
-  - { key: D,       mods: Alt,            chars: "\x02\x25"         }
-  - { key: D,       mods: Control|Alt,    chars: "\x02\x22"         }
-  - { key: Space,   mods: Super,          chars: "\x02\x20"         }
-  - { key: Up,      mods: Control|Alt,    chars: "\x02\x1b[A"       }
-  - { key: Down,    mods: Control|Alt,    chars: "\x02\x1b[B"       }
-  - { key: Right,   mods: Control|Alt,    chars: "\x02\x1b[C"       }
-  - { key: Left,    mods: Control|Alt,    chars: "\x02\x1b[D"       }
-  - { key: Up,      mods: Shift|Alt,      chars: "\x02\x1b[1;2A"    }
-  - { key: Down,    mods: Shift|Alt,      chars: "\x02\x1b[1;2B"    }
-  - { key: Right,   mods: Shift|Alt,      chars: "\x02\x1b[1;2C"    }
-  - { key: Left,    mods: Shift|Alt,      chars: "\x02\x1b[1;2D"    }
+  - { key: D,       mods: Alt,            chars: "\x01\x25"         }
+  - { key: D,       mods: Control|Alt,    chars: "\x01\x22"         }
+  - { key: Space,   mods: Super,          chars: "\x01\x20"         }
+  - { key: Up,      mods: Control|Alt,    chars: "\x01\x1b[A"       }
+  - { key: Down,    mods: Control|Alt,    chars: "\x01\x1b[B"       }
+  - { key: Right,   mods: Control|Alt,    chars: "\x01\x1b[C"       }
+  - { key: Left,    mods: Control|Alt,    chars: "\x01\x1b[D"       }
+  - { key: Up,      mods: Shift|Alt,      chars: "\x01\x1b[1;2A"    }
+  - { key: Down,    mods: Shift|Alt,      chars: "\x01\x1b[1;2B"    }
+  - { key: Right,   mods: Shift|Alt,      chars: "\x01\x1b[1;2C"    }
+  - { key: Left,    mods: Shift|Alt,      chars: "\x01\x1b[1;2D"    }
