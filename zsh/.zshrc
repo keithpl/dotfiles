@@ -25,6 +25,7 @@ alias vimdiff='nvim -d'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias history='history -i'
+alias tb='nc termbin.com 9999'
 
 case "$OSTYPE" in
 linux*)

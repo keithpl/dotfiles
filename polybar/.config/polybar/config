@@ -22,7 +22,7 @@ bottom = false
 fixed-center = true
 
 width = 100%
-height = 24
+height = 25
 
 background = ${color.background}
 foreground = ${color.foreground}
@@ -41,7 +41,7 @@ padding = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = "CaskaydiaCove Nerd Font:pixelsize=15:weight=medium:antialias=true;4"
+font-0 = "CaskaydiaCove Nerd Font:pixelsize=15:weight=medium:antialias=true;3"
 
 modules-left = i3 xwindow
 modules-center =
