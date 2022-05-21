@@ -17,7 +17,6 @@ export PROMPT="%B%F{red}%(?..%? )%B%F{blue}%n%f%b@%m %B%40<..<%~%<< %b%# "
 
 setopt append_history
 setopt extended_history
-setopt hist_ignore_space
 setopt hist_ignore_dups
 
 alias vim='nvim'
@@ -43,6 +42,27 @@ darwin*)
 	}
 	;;
 esac
+
+function historycomplete() {
+	setopt extended_glob
+
+	local history_cmd="fc -n -l -1 0 | awk '!seen[\$0]++'"
+	local fzf_cmd="fzf --height 10% +m -e -q \"$BUFFER\""
+	local candidates="$(eval $history_cmd | eval $fzf_cmd)"
+	local ret="$?"
+
+	if [ -n "$candidates" ]; then
+		BUFFER=$(echo $candidates | awk '{gsub(/\\n/,"\n")}1')
+		zle vi-fetch-history -n "$BUFFER"
+		zle end-of-line
+	fi
+	zle reset-prompt
+	return $ret
+}
+
+autoload historycomplete
+zle -N historycomplete
+bindkey ^r historycomplete
 
 # Launch tmux if not already running within tmux.
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux; fi
