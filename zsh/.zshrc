@@ -8,12 +8,13 @@ zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
+autoload -Uz promptinit && promptinit
+
+prompt pure
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
-
-export PROMPT="%B%F{red}%(?..%? )%B%F{blue}%n%f%b@%m %B%40<..<%~%<< %b%# "
 
 setopt append_history
 setopt extended_history
