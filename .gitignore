@@ -1,3 +1,5 @@
 # Juust in case
 id_rsa
 id_rsa.pub
+
+*.zwc

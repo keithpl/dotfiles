@@ -8,9 +8,7 @@ zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
-autoload -Uz promptinit && promptinit && prompt pure
-
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+autoload -Uz promptinit && promptinit
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
@@ -33,22 +31,20 @@ linux*)
 	alias ls='ls -Fv --group-directories-first --color=auto'
 	alias dmesg='dmesg --color=always'
 	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
-
-	plugin_base="/usr/share/zsh/plugins/"
 	;;
 darwin*)
 	alias ls='ls -Fv --color=auto'
 	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
-
-	fpath+=$(brew --prefix)/share/zsh-completions
-	fpath+=$(brew --prefix)/share/zsh/site-functions
-
-	plugin_base="$(brew --prefix)/share/"
 	;;
 esac
 
 source ~/.zsh/history-complete.zsh
-source $plugin_base/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zinit-install.zsh
+
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 
 # Launch tmux if not already running within tmux.
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux; fi
