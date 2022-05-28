@@ -8,9 +8,9 @@ zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
-autoload -Uz promptinit && promptinit
+autoload -Uz promptinit && promptinit && prompt pure
 
-prompt pure
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
@@ -33,37 +33,22 @@ linux*)
 	alias ls='ls -Fv --group-directories-first --color=auto'
 	alias dmesg='dmesg --color=always'
 	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
+
+	plugin_base="/usr/share/zsh/plugins/"
 	;;
 darwin*)
 	alias ls='ls -Fv --color=auto'
+	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 
-	function brewup() {
-		brew cleanup
-		brew doctor && brew update && brew upgrade
-	}
+	fpath+=$(brew --prefix)/share/zsh-completions
+	fpath+=$(brew --prefix)/share/zsh/site-functions
+
+	plugin_base="$(brew --prefix)/share/"
 	;;
 esac
 
-function historycomplete() {
-	setopt extended_glob
-
-	local history_cmd="fc -n -l -1 0 | awk '!seen[\$0]++'"
-	local fzf_cmd="fzf --height 10% +m +s -e -q \"$BUFFER\""
-	local candidates="$(eval $history_cmd | eval $fzf_cmd)"
-	local ret="$?"
-
-	if [ -n "$candidates" ]; then
-		BUFFER=$(echo $candidates | awk '{gsub(/\\n/,"\n")}1')
-		zle vi-fetch-history -n "$BUFFER"
-		zle end-of-line
-	fi
-	zle reset-prompt
-	return $ret
-}
-
-autoload historycomplete
-zle -N historycomplete
-bindkey ^r historycomplete
+source ~/.zsh/history-complete.zsh
+source $plugin_base/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Launch tmux if not already running within tmux.
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux; fi
