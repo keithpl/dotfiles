@@ -53,8 +53,6 @@ bindsym $mod+Shift+q kill
 # emulate alt-tab functionality
 bindsym Mod1+Tab workspace back_and_forth
 
-bindsym Print exec flameshot gui -r
-
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:

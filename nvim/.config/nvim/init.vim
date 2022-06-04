@@ -19,7 +19,7 @@ set nowrap
 set noexpandtab
 set formatoptions-=t
 set noerrorbells
-set scrolloff=8
+set scrolloff=4
 set mouse=a
 set updatetime=50
 set smartindent
@@ -72,7 +72,6 @@ call plug#begin(plugged_path)
 Plug 'gruvbox-community/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'

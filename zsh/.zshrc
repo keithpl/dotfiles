@@ -10,6 +10,8 @@ autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
