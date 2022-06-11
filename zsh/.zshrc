@@ -26,16 +26,17 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias history='history -i'
 alias tb='nc termbin.com 9999'
+alias ls='exa -g --group-directories-first'
 
 case "$OSTYPE" in
 linux*)
 	alias ip='ip -color=auto'
-	alias ls='ls -Fv --group-directories-first --color=auto'
+#	alias ls='ls -Fv --group-directories-first --color=auto'
 	alias dmesg='dmesg --color=always'
 	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
 	;;
 darwin*)
-	alias ls='ls -Fv --color=auto'
+#	alias ls='ls -Fv --color=auto'
 	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 	;;
 esac
