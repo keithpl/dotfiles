@@ -31,12 +31,10 @@ alias ls='exa -g --group-directories-first'
 case "$OSTYPE" in
 linux*)
 	alias ip='ip -color=auto'
-#	alias ls='ls -Fv --group-directories-first --color=auto'
 	alias dmesg='dmesg --color=always'
 	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
 	;;
 darwin*)
-#	alias ls='ls -Fv --color=auto'
 	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 	;;
 esac
