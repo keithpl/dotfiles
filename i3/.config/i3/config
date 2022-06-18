@@ -193,7 +193,7 @@ mouse_warping none
 focus_follows_mouse no
 
 smart_gaps on
-gaps inner 16
+gaps inner 12
 gaps outer 0
 
 default_border pixel 0
