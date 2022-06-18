@@ -13,8 +13,7 @@ font:
   use_thin_strokes: true
 
   normal:
-    family: CascaydiaCove Nerd Font
-    style: Medium
+    family: CaskaydiaCove Nerd Font
 
   offset:
     x: 0
