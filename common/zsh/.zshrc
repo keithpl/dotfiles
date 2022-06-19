@@ -21,7 +21,7 @@ setopt extended_history
 setopt hist_ignore_dups
 
 alias vim='nvim'
-alias vimdiff='nvim -d'
+alias vimdiff='nvim -d -c "tabdo windo set nolist"'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias history='history -i'
