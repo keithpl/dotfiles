@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+platform=
+stow_target="$HOME"
+setup_action="install"
+
+function detect_platform() {
+	case "$OSTYPE" in
+	"linux"*)
+		platform="linux"
+		;;
+	"darwin"*)
+		platform="macos"
+		;;
+	*)
+		echo "Unknown platform: $OSTYPE"
+		exit 1
+	esac
+
+	echo "Detected platform $OSTYPE ($platform)"
+	echo
+}
+
+function install_dotfiles() {
+	for f in $(ls -d */ | cut -f 1 -d '/'); do
+		echo "[$1] Installing dotfiles for: $f"
+		stow -t "$stow_target" -R "$f"
+	done
+}
+
+function uninstall_dotfiles() {
+	for f in $(ls -d */ | cut -f 1 -d '/'); do
+		echo "[$1] Uninstalling dotfiles for: $f"
+		stow -t "$stow_target" -D "$f"
+	done
+}
+
+function setup_dotfiles() {
+	if [ ! -d "$1" ]; then
+		return 1;
+	fi
+
+	pushd "$1" > /dev/null
+	if [[ "$setup_action" == "install" ]]; then
+		install_dotfiles "$1"
+	else
+		uninstall_dotfiles "$1"
+	fi
+	popd > /dev/null
+}
+
+function main() {
+	if [[ "$1" == "--uninstall" ]]; then
+		setup_action="uninstall"
+	fi
+	detect_platform
+
+	pushd $(dirname "$(readlink -f "$0")") > /dev/null
+	setup_dotfiles "common"
+	setup_dotfiles "$platform"
+	popd > /dev/null
+}
+
+main "$@"
