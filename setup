@@ -40,13 +40,13 @@ function setup_dotfiles() {
 		return 1;
 	fi
 
-	pushd "$1" > /dev/null
+	pushd "$1" > /dev/null || exit 1
 	if [[ "$setup_action" == "install" ]]; then
 		install_dotfiles "$1"
 	else
 		uninstall_dotfiles "$1"
 	fi
-	popd > /dev/null
+	popd > /dev/null || exit 1
 }
 
 function main() {
@@ -55,10 +55,10 @@ function main() {
 	fi
 	detect_platform
 
-	pushd $(dirname "$(readlink -f "$0")") > /dev/null
+	pushd $(dirname "$(readlink -f "$0")") > /dev/null || exit 1
 	setup_dotfiles "common"
 	setup_dotfiles "$platform"
-	popd > /dev/null
+	popd > /dev/null || exit 1
 }
 
 main "$@"
