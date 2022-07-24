@@ -12,7 +12,9 @@ local clangd_fallback_flags = {
     "-Wwrite-strings", "-Wno-unused-function", "-Wno-empty-translation-unit"
 }
 
-autopairs.setup()
+autopairs.setup {
+    check_ts = true
+}
 
 cmp.setup {
     snippet = {
