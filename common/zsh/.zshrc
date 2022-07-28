@@ -4,6 +4,11 @@
 # Set emacs mode.
 bindkey -e
 
+#bindkey '^[[Z' autosuggest-accept
+
+# use end-of-line instead of autosuggest-accept to preserve syntax highlighting
+bindkey '^[[Z' end-of-line
+
 zstyle :compinstall filename '${HOME}/.zshrc'
 
 autoload -Uz compinit && compinit
