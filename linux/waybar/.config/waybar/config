@@ -54,7 +54,7 @@
 		},
 
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"on-click-middle": "~/.config/polybar/pa-sink-toggle.sh",
+		"on-click-middle": "~/.config/waybar/pa-sink-toggle",
 		"on-click-right": "pavucontrol",
 	},
 
