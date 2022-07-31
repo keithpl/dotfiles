@@ -1,6 +1,0 @@
-configuration {
-	modi: "drun,window,ssh,combi";
-	combi-modi: "drun,window,ssh";
-}
-
-@theme "~/.config/rofi/dracula.rasi"
