@@ -124,9 +124,11 @@ augroup indentation
     autocmd FileType c      call SetTabWidth(8)
     autocmd FileType lua    call SetTabWidthExpand(4)
     autocmd FileType python call SetTabWidthExpand(4)
+    autocmd FileType sh     call SetTabWidthExpand(2)
     autocmd FileType vim    call SetTabWidthExpand(4)
     autocmd FileType xml    call SetTabWidthExpand(2)
     autocmd FileType yaml   call SetTabWidthExpand(2)
+    autocmd FileType zsh    call SetTabWidthExpand(2)
 
     autocmd BufWritePost,BufRead,BufNewFile *.c,*.h set filetype=c
     autocmd BufWritePost,BufRead,BufNewFile *.c,*.h setlocal cindent
