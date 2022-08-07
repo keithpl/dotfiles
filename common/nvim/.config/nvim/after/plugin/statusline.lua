@@ -3,9 +3,10 @@ local nvim_web_devicons = require("nvim-web-devicons")
 
 nvim_web_devicons.setup()
 
-lualine.setup {
+lualine.setup({
     options = {
-        theme = "gruvbox_dark",
+--        theme = "tokyonight",
+        theme = "gruvbox-baby",
         component_separators = {
             left = "|",
             right = "|"
@@ -15,4 +16,4 @@ lualine.setup {
             right = ""
         }
     }
-}
+})
