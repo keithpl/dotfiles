@@ -1,4 +1,5 @@
 local fn = vim.fn
+local packer_bootstrap = false
 local packer_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(packer_path)) > 0 then
@@ -11,15 +12,16 @@ if fn.empty(fn.glob(packer_path)) > 0 then
         packer_path
     })
 
-    vim.cmd [[packadd packer.nvim]]
+    vim.cmd("packadd packer.nvim")
 end
 
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
-    use("folke/tokyonight.nvim")
+    --use("folke/tokyonight.nvim")
+    --use("gruvbox-community/gruvbox")
     use("luisiacc/gruvbox-baby")
-    -- use("gruvbox-community/gruvbox")
+    use("norcalli/nvim-colorizer.lua")
 
     use("windwp/nvim-autopairs")
     use("neovim/nvim-lspconfig")
@@ -36,8 +38,10 @@ return require("packer").startup(function(use)
     use("nvim-lualine/lualine.nvim")
     use("kyazdani42/nvim-web-devicons")
 
-    use("norcalli/nvim-colorizer.lua")
-
     use("nvim-lua/plenary.nvim")
     use("nvim-telescope/telescope.nvim")
+
+    if packer_bootstrap then
+        require("packer").sync()
+    end
 end)

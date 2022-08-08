@@ -3,3 +3,5 @@ id_rsa
 id_rsa.pub
 
 *.zwc
+
+packer_compiled.lua

@@ -16,9 +16,11 @@ vim.g.mapleader = " "
 nnoremap("ZZ", "<nop>")
 nnoremap("ZQ", "<nop>")
 
+nnoremap("<leader>ps", "<cmd>PackerSync<cr>")
+
 nnoremap("Y", "y$")
-nnoremap("<leader>j", "<cmd>m .+1<CR>==")
-nnoremap("<leader>k", "<cmd>m .-2<CR>==")
+nnoremap("<leader>j", "<cmd>m .+1<cr>==")
+nnoremap("<leader>k", "<cmd>m .-2<cr>==")
 
 nnoremap("<leader>ff", "<cmd>Telescope find_files<cr>")
 nnoremap("<leader>fg", "<cmd>Telescope live_grep<cr>")

@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local identation = augroup("indentation", { clear = true })
+local indentation = augroup("indentation", { clear = true })
 
 local function set_tab_width(width)
     return function()

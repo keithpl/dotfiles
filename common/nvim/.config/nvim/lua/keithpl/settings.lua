@@ -25,7 +25,6 @@ opt.mouse = "a"
 opt.updatetime = 50
 opt.smartindent = true
 opt.shortmess:append("c")
-
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 
 opt.termguicolors = true
