@@ -207,7 +207,12 @@ input "1133:49300:Logitech_PRO_X_Wireless" {
 	pointer_accel 0.25
 }
 
-input "1240:61138:Massdrop_Inc._CTRL_Keyboard" {
+#input "1240:61138:Massdrop_Inc._CTRL_Keyboard" {
+#	repeat_rate 50
+#	repeat_delay 250
+#}
+
+input "13364:288:Keychron_Keychron_Q3" {
 	repeat_rate 50
 	repeat_delay 250
 }
