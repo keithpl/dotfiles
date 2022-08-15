@@ -22,17 +22,17 @@ function detect_platform() {
 }
 
 function install_dotfiles() {
-	for f in $(ls -d */ | cut -f 1 -d '/'); do
+	while read -r f; do
 		echo "[$1] Installing dotfiles for: $f"
 		stow -t "$stow_target" -R "$f"
-	done
+	done < <(find . -maxdepth 1 -type d ! -name . | cut -f 2 -d '/')
 }
 
 function uninstall_dotfiles() {
-	for f in $(ls -d */ | cut -f 1 -d '/'); do
+	while read -r f; do
 		echo "[$1] Uninstalling dotfiles for: $f"
 		stow -t "$stow_target" -D "$f"
-	done
+	done < <(find . -maxdepth 1 -type d ! -name . | cut -f 2 -d '/')
 }
 
 function setup_dotfiles() {
@@ -55,7 +55,7 @@ function main() {
 	fi
 	detect_platform
 
-	pushd $(dirname "$(readlink -f "$0")") > /dev/null || exit 1
+	pushd "$(dirname "$(readlink -f "$0")")" > /dev/null || exit 1
 	setup_dotfiles "common"
 	setup_dotfiles "$platform"
 	popd > /dev/null || exit 1

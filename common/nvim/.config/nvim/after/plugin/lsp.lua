@@ -33,6 +33,8 @@ cmp.setup({
     }
 })
 
+lspconfig.bashls.setup({ capabilities = lspcaps })
+
 lspconfig.clangd.setup({
     cmd = { "clangd", "--background-index", "--clang-tidy" },
     capabilities = lspcaps,
