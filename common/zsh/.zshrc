@@ -34,12 +34,12 @@ alias tb='nc termbin.com 9999'
 alias ls='exa -g --group-directories-first'
 
 case "$OSTYPE" in
-linux*)
+"linux"*)
 	alias ip='ip -color=auto'
 	alias dmesg='dmesg --color=always'
 	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
 	;;
-darwin*)
+"darwin"*)
 	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 	;;
 esac
