@@ -46,6 +46,9 @@ bindsym $mod+Return exec --no-startup-id alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# take a screenshot
+bindsym $mod+Shift+s exec --no-startup-id grim -g "$(slurp -d)" - | swappy -f -
+
 # emulate alt-tab functionality
 bindsym Mod1+Tab workspace back_and_forth
 

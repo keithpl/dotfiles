@@ -3,7 +3,7 @@ window:
   title: Alacritty
   dynamic_title: true
   decorations: full
-  opacity: 0.90
+  opacity: 0.80
 
 env:
   TERM: xterm-256color

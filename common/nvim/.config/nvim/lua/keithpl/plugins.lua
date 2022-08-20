@@ -23,7 +23,7 @@ return require("packer").startup(function(use)
     use("luisiacc/gruvbox-baby")
     use("norcalli/nvim-colorizer.lua")
 
-    use("windwp/nvim-autopairs")
+--    use("windwp/nvim-autopairs")
     use("neovim/nvim-lspconfig")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
