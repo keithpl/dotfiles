@@ -41,13 +41,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # take a screenshot
-bindsym $mod+Shift+s exec --no-startup-id grim -g "$(slurp -d)" - | swappy -f -
+bindsym $mod+Shift+s exec grim -g "$(slurp-safe -d)" - | swappy -f -
 
 # emulate alt-tab functionality
 bindsym Mod1+Tab workspace back_and_forth
@@ -60,7 +60,7 @@ bindsym Mod1+Tab workspace back_and_forth
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 #bindsym $mod+d exec --no-startup-id "rofi -show drun -show-icons"
-bindsym $mod+d exec --no-startup-id "wofi --show drun"
+bindsym $mod+d exec "wofi --show drun"
 
 # change focus
 bindsym $mod+h focus left
