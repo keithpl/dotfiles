@@ -7,7 +7,7 @@ opt.secure = true
 opt.hidden = true
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = os.getenv("XDG_CACHE_HOME") .. "/nvim/undodir"
 opt.undofile = true
 
 opt.ignorecase = true
