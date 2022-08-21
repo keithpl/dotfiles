@@ -5,3 +5,6 @@ id_rsa.pub
 *.zwc
 
 packer_compiled.lua
+
+.zsh_history
+.zcompdump
