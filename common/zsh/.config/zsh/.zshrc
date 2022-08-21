@@ -1,5 +1,7 @@
 # Do not load these options if the session is not interactive.
-[[ $- != *i* ]] && return 1
+if [[ $- != *i* ]]; then
+	return 1
+fi
 
 # Set emacs mode.
 bindkey -e
@@ -13,15 +15,22 @@ autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-export HISTFILE="$ZDOTDIR/.zsh_history"
-export HISTSIZE=100000
-export SAVEHIST=100000
-
 setopt append_history
 setopt extended_history
 setopt hist_ignore_dups
+setopt glob_dots
+
+export HISTPATH="$XDG_STATE_HOME/zsh"
+export HISTFILE="$HISTPATH/.zsh_history"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+if [[ -d "$HISTPATH" ]]; then
+	mkdir -p "$HISTPATH"
+fi
+
+export LESSHISTFILE=-
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 alias vim='nvim'
 alias vimdiff='nvim -d -c "tabdo windo set nolist"'
@@ -51,4 +60,6 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 
 # Launch tmux if not already running within tmux.
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then tmux; fi
+if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
+	tmux;
+fi
