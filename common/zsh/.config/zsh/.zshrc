@@ -25,7 +25,7 @@ export HISTFILE="$HISTPATH/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-if [[ -d "$HISTPATH" ]]; then
+if [[ ! -d "$HISTPATH" ]]; then
 	mkdir -p "$HISTPATH"
 fi
 
