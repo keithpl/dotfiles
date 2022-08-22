@@ -11,6 +11,7 @@ gruvbox_baby_custom.inactive.c.bg = gruvbox_baby_colors.background_dark
 
 lualine.setup({
     options = {
+        icons_enabled = true,
         theme = gruvbox_baby_custom,
         component_separators = {
             left = "|",
