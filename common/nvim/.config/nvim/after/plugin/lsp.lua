@@ -21,10 +21,10 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<S-Tab>"] = cmp.mapping.confirm {
+        ["<S-Tab>"] = cmp.mapping.confirm({
             select = true,
             behavior = cmp.ConfirmBehavior.Replace
-        }
+        })
     }),
     sources = {
         { name = "nvim_lsp" },
@@ -36,7 +36,12 @@ cmp.setup({
 lspconfig.bashls.setup({ capabilities = lspcaps })
 
 lspconfig.clangd.setup({
-    cmd = { "clangd", "--background-index", "--clang-tidy" },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion-decorators=false"
+    },
     capabilities = lspcaps,
     init_options = {
         fallbackFlags = clangd_fallback_flags
