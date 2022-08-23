@@ -23,7 +23,7 @@ opt.errorbells = false
 opt.scrolloff = 8
 opt.mouse = "a"
 opt.updatetime = 50
-opt.smartindent = true
+opt.smartindent = false
 opt.shortmess:append("c")
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 

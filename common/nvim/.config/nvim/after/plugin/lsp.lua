@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local autopairs = require("nvim-autopairs")
 local lspconfig = require("lspconfig")
 local lspcaps = vim.lsp.protocol.make_client_capabilities()
 
@@ -10,6 +11,8 @@ local clangd_fallback_flags = {
     "-Wvla", "-Wundef", "-Wcast-qual", "-Winit-self", "-Wwrite-strings",
     "-Wlogical-op", "-Wno-unused-function", "-Wno-empty-translation-unit"
 }
+
+autopairs.setup()
 
 cmp.setup({
     snippet = {

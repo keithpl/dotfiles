@@ -21,7 +21,7 @@ return require("packer").startup(function(use)
     use("luisiacc/gruvbox-baby")
     use("norcalli/nvim-colorizer.lua")
 
---    use("windwp/nvim-autopairs")
+    use("windwp/nvim-autopairs")
     use("neovim/nvim-lspconfig")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
@@ -38,6 +38,8 @@ return require("packer").startup(function(use)
 
     use("nvim-lua/plenary.nvim")
     use("nvim-telescope/telescope.nvim")
+
+    require("nvim-autopairs").setup()
 
     if packer_bootstrap then
         require("packer").sync()
