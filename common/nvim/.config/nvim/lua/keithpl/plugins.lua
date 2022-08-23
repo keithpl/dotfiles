@@ -39,7 +39,7 @@ return require("packer").startup(function(use)
     use("nvim-lua/plenary.nvim")
     use("nvim-telescope/telescope.nvim")
 
-    require("nvim-autopairs").setup()
+    use("Vimjas/vim-python-pep8-indent")
 
     if packer_bootstrap then
         require("packer").sync()
