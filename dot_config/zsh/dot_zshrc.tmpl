@@ -40,16 +40,13 @@ alias history='history -i'
 alias tb='nc termbin.com 9999'
 alias ls='exa -g --group-directories-first'
 
-case "$OSTYPE" in
-"linux"*)
-	alias ip='ip -color=auto'
-	alias dmesg='dmesg --color=always'
-	alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
-	;;
-"darwin"*)
-	alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
-	;;
-esac
+{{ if eq .chezmoi.os "linux" -}}
+alias ip='ip -color=auto'
+alias dmesg='dmesg --color=always'
+alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
+{{- else if eq .chezmoi.os "darwin" -}}
+alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
+{{- end }}
 
 source "$ZDOTDIR/history-complete.zsh"
 source "$ZDOTDIR/zinit-install.zsh"
