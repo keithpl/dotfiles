@@ -3,10 +3,7 @@ if [[ $- != *i* ]]; then
 	return 1
 fi
 
-# Set emacs mode.
 bindkey -e
-
-# use end-of-line instead of autosuggest-accept to preserve syntax highlighting
 bindkey '^[[Z' end-of-line
 
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
@@ -56,14 +53,13 @@ zinit light sindresorhus/pure
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 
-# Launch tmux if not already running within tmux.
-if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
-	tmux
-	exit
-fi
-
 {{ if eq .chezmoi.os "darwin" -}}
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 {{ end -}}
+
+# Launch tmux if not already running within tmux.
+if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
+	exec tmux
+fi
 
