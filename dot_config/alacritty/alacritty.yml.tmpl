@@ -8,6 +8,7 @@ window:
 env:
   TERM: xterm-256color
 
+{{ if eq .chezmoi.os "linux" -}}
 font:
   size: 14
   use_thin_strokes: true
@@ -19,6 +20,19 @@ font:
   offset:
     x: 0
     y: 0
+{{- else if eq .chezmoi.os "darwin" -}}
+font:
+  size: 15
+  use_thin_strokes: true
+
+  normal:
+    family: CaskaydiaCove Nerd Font
+    style: Medium
+
+  offset:
+    x: 0
+    y: 0
+{{- end }}
 
 cursor:
   style:
