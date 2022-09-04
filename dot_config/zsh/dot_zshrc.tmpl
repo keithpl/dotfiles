@@ -29,10 +29,6 @@ if [[ ! -d "$HISTPATH" ]]; then
 	mkdir -p "$HISTPATH"
 fi
 
-{{ if eq .chezmoi.os "darwin" -}}
-export PATH="/opt/homebrew/bin:$PATH"
-{{ end -}}
-
 export LESSHISTFILE=-
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
@@ -44,7 +40,7 @@ alias history='history -i'
 alias tb='nc termbin.com 9999'
 alias ls='exa -g --group-directories-first'
 
-{{ if eq .chezmoi.os "linux" -}}
+{{- if eq .chezmoi.os "linux" -}}
 alias ip='ip -color=auto'
 alias dmesg='dmesg --color=always'
 alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
@@ -62,6 +58,12 @@ zinit light zsh-users/zsh-autosuggestions
 
 # Launch tmux if not already running within tmux.
 if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
-	tmux;
+	tmux
+	exit
 fi
+
+{{ if eq .chezmoi.os "darwin" -}}
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+{{ end -}}
 
