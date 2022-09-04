@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+save_path="$HOME/Videos"
+
+if pgrep wf-recorder; then
+	pkill --signal SIGINT wf-recorder > /dev/null
+	notify-send "wf-record" "Screen recording saved in $save_path"
+	exit 0
+fi
+
+output="$save_path/screencast-$(date +%Y%m%d-%H%M%S).mp4"
+
+wf-recorder -f "$output" -g "$(slurp)"
