@@ -29,6 +29,10 @@ if [[ ! -d "$HISTPATH" ]]; then
 	mkdir -p "$HISTPATH"
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
+export PATH="/opt/homebrew/bin:$PATH"
+{{ end -}}
+
 export LESSHISTFILE=-
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
@@ -60,3 +64,4 @@ zinit light zsh-users/zsh-autosuggestions
 if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
 	tmux;
 fi
+
