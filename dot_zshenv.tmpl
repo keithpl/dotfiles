@@ -10,6 +10,6 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:=$HOME/.local/state}"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-{{- if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
 export PATH="/opt/homebrew/bin:$PATH"
-{{- end }}
+{{- end -}}
