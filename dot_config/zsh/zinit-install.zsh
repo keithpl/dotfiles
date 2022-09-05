@@ -1,4 +1,6 @@
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+#!/usr/bin/env zsh
+
+if [[ ! -f "$HOME/.local/share/zinit/zinit.git/zinit.zsh" ]]; then
 	mkdir -p "$HOME/.local/share/zinit" && \
 		chmod g-rwX "$HOME/.local/share/zinit"
 	git clone https://github.com/zdharma-continuum/zinit \

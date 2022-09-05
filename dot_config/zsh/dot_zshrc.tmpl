@@ -1,3 +1,4 @@
+# vi: ft=zsh
 # Do not load these options if the session is not interactive.
 if [[ $- != *i* ]]; then
 	return 1
@@ -12,19 +13,7 @@ autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
 
-setopt append_history
-setopt extended_history
-setopt hist_ignore_dups
 setopt glob_dots
-
-export HISTPATH="$XDG_STATE_HOME/zsh"
-export HISTFILE="$HISTPATH/.zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-
-if [[ ! -d "$HISTPATH" ]]; then
-	mkdir -p "$HISTPATH"
-fi
 
 export LESSHISTFILE=-
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -45,7 +34,7 @@ alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
 alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 {{- end }}
 
-source "$ZDOTDIR/history-complete.zsh"
+source "$ZDOTDIR/history.zsh"
 source "$ZDOTDIR/zinit-install.zsh"
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
@@ -62,4 +51,3 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
 	exec tmux
 fi
-
