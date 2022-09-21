@@ -29,7 +29,7 @@ alias ls='exa -g --group-directories-first'
 {{- if eq .chezmoi.os "linux" }}
 alias ip='ip -color=auto'
 alias dmesg='dmesg --color=always'
-alias weechat='firejail --private=${HOME}/jails/weechat -- weechat'
+alias weechat='firejail --private="$XDG_DATA_HOME/firejail/weechat" -- weechat'
 {{- else if eq .chezmoi.os "darwin" }}
 alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
 {{- end }}
@@ -47,7 +47,9 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 {{ end -}}
 
-# Launch tmux if not already running within tmux.
-if command -v tmux &>/dev/null && [[ -z "$TMUX" ]]; then
-	exec tmux
+# Launch tmux if not already running within tmux, do not spawn tmux
+# when remotely accessing via ssh.
+if command -v tmux &>/dev/null && [[ -z "$TMUX" ]] &&
+	[[ -z "$SSH_CLIENT" ]] && [[ -z "$SSH_TTY" ]]; then
+	tmux
 fi
