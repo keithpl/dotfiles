@@ -209,8 +209,8 @@ output DP-3 mode 2560x1440@143.998Hz pos 2560 0
 
 output "*" bg /usr/share/backgrounds/wallhaven-farcry5.png fill
 
-input "1133:49300:Logitech_PRO_X_Wireless" {
-	accel_profile "flat"	
+input "type:pointer" {
+	accel_profile "flat"
 	pointer_accel 0.25
 }
 
