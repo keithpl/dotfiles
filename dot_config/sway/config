@@ -24,6 +24,10 @@ set $term alacritty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun
 
+set $screenshot grim -g "$(slurp -d)" - | swappy -f -
+
+set $screenrecord screen-record
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -113,6 +117,11 @@ bindsym $mod+Shift+q kill
 
 # Start your launcher
 bindsym $mod+d exec $menu
+
+bindsym Print exec $screenshot
+bindsym $mod+Shift+s exec $screenshot
+
+bindsym $mod+Print exec $screenrecord
 
 # Volume control bindings
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
