@@ -6,6 +6,7 @@
     font-family: "CaskaydiaCove Nerd Font";
     font-size: 19px;
     min-height: 0;
+    padding: 0 2px;
 }
 
 window#waybar {
