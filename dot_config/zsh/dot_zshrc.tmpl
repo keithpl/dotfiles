@@ -17,6 +17,7 @@ setopt glob_dots
 
 export LESSHISTFILE=-
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 
 alias vim='nvim'
 alias vimdiff='nvim -d -c "tabdo windo set nolist"'
