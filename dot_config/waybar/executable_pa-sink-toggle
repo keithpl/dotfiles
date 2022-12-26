@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 get_current_sink() {
-	local current_sink_name
+	local current_sink
 
-	current_sink_name="$(pactl get-default-sink)"
-	pactl list sinks short | grep "$current_sink_name" | cut -f 1
+	current_sink="$(pactl get-default-sink)"
+	pactl list sinks short | grep "$current_sink" | head -n 1 | cut -f 1
 }
 
 get_next_sink() {
