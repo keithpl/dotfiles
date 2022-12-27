@@ -35,6 +35,6 @@ opt.laststatus = 2
 opt.background = "dark"
 opt.colorcolumn = "81"
 opt.signcolumn = "auto"
-opt.cmdheight = 1
+opt.cmdheight = 0
 opt.list = true
 opt.listchars = "tab:▸·,trail:~,extends:→,precedes:←,space:␣"

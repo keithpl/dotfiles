@@ -1,5 +1,0 @@
-require("keithpl.settings")
-require("keithpl.plugins")
-require("keithpl.format")
-require("keithpl.keymap")
-require("keithpl.highlight")

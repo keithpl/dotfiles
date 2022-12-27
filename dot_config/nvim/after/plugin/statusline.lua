@@ -1,18 +1,42 @@
-local lualine = require("lualine")
-local nvim_web_devicons = require("nvim-web-devicons")
-local gruvbox_baby_custom = require("lualine.themes.gruvbox-baby")
-local gruvbox_baby_colors = require("gruvbox-baby.colors").config()
+local res
+local devicons
+local lualine
+local lualine_theme
 
-nvim_web_devicons.setup()
+res, lualine = pcall(require, "lualine")
+if not res then
+    vim.notify("Failed to load lualine lua module")
+    return
+end
 
-gruvbox_baby_custom.normal.c.bg = gruvbox_baby_colors.background_dark
-gruvbox_baby_custom.inactive.b.bg = gruvbox_baby_colors.background
-gruvbox_baby_custom.inactive.c.bg = gruvbox_baby_colors.background_dark
+res, devicons = pcall(require, "nvim-web-devicons")
+if not res then
+    vim.notify("Failed to load nvim-web-devicons lua module")
+else
+    devicons.setup()
+end
+
+res, lualine_theme = pcall(require, "lualine.themes.gruvbox-baby")
+if not res then
+    vim.notify("Failed to load gruvbox-baby lualine theme")
+    lualine_theme = "auto"
+else
+    local temp
+    local gruvbox_baby_colors
+
+    res, tmp = pcall(require, "gruvbox-baby.colors")
+    if res then
+        gruvbox_baby_colors = tmp.config()
+        lualine_theme.normal.c.bg = gruvbox_baby_colors.background_dark
+        lualine_theme.inactive.b.bg = gruvbox_baby_colors.background
+        lualine_theme.inactive.c.bg = gruvbox_baby_colors.background_dark
+    end
+end
 
 lualine.setup({
     options = {
         icons_enabled = true,
-        theme = gruvbox_baby_custom,
+        theme = lualine_theme,
         component_separators = {
             left = "|",
             right = "|"

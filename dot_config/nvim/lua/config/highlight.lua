@@ -26,5 +26,5 @@ autocmd("TextYankPost", {
             higroup = "IncSearch",
             timeout = 100
         })
-    end,
+    end
 })

@@ -1,4 +1,4 @@
-local function packer_ensure()
+local function packer_install()
     local fn = vim.fn
     local url = "https://github.com/wbthomason/packer.nvim"
     local path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -11,28 +11,27 @@ local function packer_ensure()
     return false
 end
 
-local packer_bootstrap = packer_ensure()
+local packer_bootstrap = packer_install()
 
-return require("packer").startup(function(use)
+local packer = require("packer")
+
+return packer.startup(function(use)
     use("wbthomason/packer.nvim")
 
     use("luisiacc/gruvbox-baby")
-    use("norcalli/nvim-colorizer.lua")
+    use("kyazdani42/nvim-web-devicons")
+    use("nvim-lualine/lualine.nvim")
 
-    use("windwp/nvim-autopairs")
     use("neovim/nvim-lspconfig")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/nvim-cmp")
-
-    use("L3MON4D3/LuaSnip")
-    use("saadparwaiz1/cmp_luasnip")
-
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdateSync" })
     use("nvim-treesitter/playground")
 
-    use("nvim-lualine/lualine.nvim")
-    use("kyazdani42/nvim-web-devicons")
+    use("hrsh7th/nvim-cmp")
+    use("hrsh7th/cmp-buffer")
+    use("hrsh7th/cmp-nvim-lsp")
+    use("L3MON4D3/LuaSnip")
+    use("saadparwaiz1/cmp_luasnip")
+    use("windwp/nvim-autopairs")
 
     use("nvim-lua/plenary.nvim")
     use("nvim-telescope/telescope.nvim")
@@ -40,6 +39,6 @@ return require("packer").startup(function(use)
     use("Vimjas/vim-python-pep8-indent")
 
     if packer_bootstrap then
-        require("packer").sync()
+        packer.sync()
     end
 end)
