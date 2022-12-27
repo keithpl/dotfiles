@@ -15,7 +15,7 @@ local packer_bootstrap = packer_install()
 
 local packer = require("packer")
 
-return packer.startup(function(use)
+local function packer_plugins(use)
     use("wbthomason/packer.nvim")
 
     use("luisiacc/gruvbox-baby")
@@ -41,4 +41,15 @@ return packer.startup(function(use)
     if packer_bootstrap then
         packer.sync()
     end
-end)
+end
+
+return packer.startup({
+    packer_plugins,
+    config = {
+        display = {
+            open_fn = function()
+                return require("packer.util").float({ border = "single" })
+            end
+        }
+    }
+})
