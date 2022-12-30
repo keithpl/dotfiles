@@ -23,7 +23,7 @@ local function packer_plugins(use)
     use("nvim-lualine/lualine.nvim")
 
     use("neovim/nvim-lspconfig")
-    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdateSync" })
+    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdateSync" })
     use("nvim-treesitter/playground")
 
     use("hrsh7th/nvim-cmp")
