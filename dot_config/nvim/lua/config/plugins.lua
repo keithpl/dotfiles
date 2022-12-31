@@ -12,7 +12,6 @@ local function packer_install()
 end
 
 local packer_bootstrap = packer_install()
-
 local packer = require("packer")
 
 local function packer_plugins(use)
@@ -22,9 +21,18 @@ local function packer_plugins(use)
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lualine/lualine.nvim")
 
-    use("neovim/nvim-lspconfig")
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdateSync" })
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            local ts_update = require("nvim-treesitter.install").update({
+                with_sync = true
+            })
+            ts_update()
+        end
+    })
+
     use("nvim-treesitter/playground")
+    use("neovim/nvim-lspconfig")
 
     use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
