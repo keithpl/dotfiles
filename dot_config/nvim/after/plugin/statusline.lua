@@ -21,7 +21,7 @@ if not res then
     vim.notify("Failed to load gruvbox-baby lualine theme")
     lualine_theme = "auto"
 else
-    local temp
+    local tmp
     local gruvbox_baby_colors
 
     res, tmp = pcall(require, "gruvbox-baby.colors")
