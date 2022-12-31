@@ -1,5 +1,4 @@
 local res
-local lspcaps
 local lspconfig
 
 local clangd_fallback_flags = {
@@ -17,9 +16,9 @@ if not res then
     return
 end
 
-lspcaps = vim.lsp.protocol.make_client_capabilities()
-
-lspconfig.bashls.setup({ capabilities = lspcaps })
+lspconfig.bashls.setup({})
+lspconfig.pyright.setup({})
+lspconfig.rust_analyzer.setup({})
 
 lspconfig.clangd.setup({
     cmd = {
@@ -28,22 +27,19 @@ lspconfig.clangd.setup({
         "--clang-tidy",
         "--header-insertion-decorators=false"
     },
-    capabilities = lspcaps,
     init_options = {
         fallbackFlags = clangd_fallback_flags
     }
 })
 
-lspconfig.pyright.setup({ capabilities = lspcaps })
-
-lspconfig.rust_analyzer.setup({ capabilites = lspcaps })
-
 lspconfig.sumneko_lua.setup({
-    capabilities = lspcaps,
     settings = {
         Lua = {
             diagnostics = {
                 globals = { "vim" }
+            },
+            telemetry = {
+                enable = false
             }
         }
     }
