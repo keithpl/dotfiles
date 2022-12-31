@@ -4,14 +4,14 @@ local autocmd = vim.api.nvim_create_autocmd
 local hl_incsearch = augroup("hl-incsearch", { clear = true })
 local hl_yank = augroup("hl-yank", { clear = true })
 
-autocmd({ "CmdlineEnter" }, {
+autocmd("CmdlineEnter", {
     group = hl_incsearch,
     callback = function()
         vim.opt_local.hlsearch = true
     end
 })
 
-autocmd({ "CmdlineLeave" }, {
+autocmd("CmdlineLeave", {
     group = hl_incsearch,
     callback = function()
         vim.opt_local.hlsearch = false

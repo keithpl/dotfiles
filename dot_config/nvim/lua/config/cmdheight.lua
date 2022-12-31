@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local cmdheight_fixes = augroup("cmdheight-fixes", { clear = true })
 
-autocmd({ "RecordingEnter" }, {
+autocmd("RecordingEnter", {
     group = cmdheight_fixes,
     pattern = "*",
     callback = function()
@@ -11,7 +11,7 @@ autocmd({ "RecordingEnter" }, {
     end
 })
 
-autocmd({ "RecordingLeave" }, {
+autocmd("RecordingLeave", {
     group = cmdheight_fixes,
     pattern = "*",
     callback = function()
