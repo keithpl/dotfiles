@@ -49,7 +49,7 @@ output "DP-3" mode 2560x1440@143.998Hz pos 2560 0
 #
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -58,8 +58,8 @@ output "DP-3" mode 2560x1440@143.998Hz pos 2560 0
 exec swayidle -w \
     before-sleep 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
     timeout 300 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
-    timeout 330 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"'
+    timeout 330 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"'
 
 ### Input configuration
 #
