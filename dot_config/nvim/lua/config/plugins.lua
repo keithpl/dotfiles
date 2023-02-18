@@ -18,6 +18,7 @@ local function packer_plugins(use)
     use("wbthomason/packer.nvim")
 
     use("luisiacc/gruvbox-baby")
+    use("nvim-tree/nvim-tree.lua")
     use("kyazdani42/nvim-web-devicons")
     use("nvim-lualine/lualine.nvim")
 
