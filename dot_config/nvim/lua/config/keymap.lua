@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 nnoremap("ZZ", "<nop>")
 nnoremap("ZQ", "<nop>")
 
-nnoremap("<leader>ps", "<cmd>PackerSync<cr>")
+nnoremap("<leader>ls", "<cmd>Lazy sync<cr>")
 
 nnoremap("Y", "y$")
 nnoremap("<leader>j", "<cmd>m .+1<cr>==")
