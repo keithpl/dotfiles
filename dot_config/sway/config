@@ -59,7 +59,7 @@ exec swayidle -w \
     before-sleep 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
     timeout 300 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
     timeout 330 'swaymsg "output * power off"' \
-    resume 'swaymsg "output * power on"'
+    resume 'swaymsg "output DP-2 power on"; sleep 0.3; swaymsg "output DP-3 power on"'
 
 ### Input configuration
 #
