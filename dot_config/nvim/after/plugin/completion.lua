@@ -64,6 +64,12 @@ cmp.setup({
         end
     },
     mapping = cmp.mapping.preset.insert({
+        ["<Up>"] = cmp.config.disable,
+        ["<Down>"] = cmp.config.disable,
+        ["<C-Up>"] = cmp.mapping.select_prev_item(),
+        ["<C-Down>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
