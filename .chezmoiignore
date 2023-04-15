@@ -1,5 +1,4 @@
 .gitignore
 LICENSE
 README.md
-lazy-lock.json
-*/lazy-lock.json
+.config/nvim/lazy-lock.json
