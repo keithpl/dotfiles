@@ -1,27 +1,27 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
 local indentation = augroup("indentation", { clear = true })
+
+local function __set_tab_width(width)
+    vim.opt_local.tabstop = width
+    vim.opt_local.shiftwidth = width
+end
 
 local function set_tab_width(width)
     return function()
-        vim.opt_local.tabstop = width
-        vim.opt_local.shiftwidth = width
+        __set_tab_width(width)
     end
 end
 
 local function set_tab_width_expand(width)
     return function()
-        vim.opt_local.tabstop = width
-        vim.opt_local.shiftwidth = width
+        __set_tab_width(width)
         vim.opt_local.expandtab = true
     end
 end
 
-local function set_filetype_indent(type, cb)
+local function set_filetype_indent(pattern, cb)
     autocmd("FileType", {
         group = indentation,
-        pattern = type,
+        pattern = pattern,
         callback = cb
     })
 end
@@ -32,7 +32,7 @@ autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
     callback = function()
         vim.opt_local.filetype = "c"
         vim.opt_local.cindent = true
-        vim.opt_local.cino = "(0:0"
+        vim.opt_local.cinoptions = "(0:0"
     end
 })
 

@@ -1,6 +1,3 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
 local hl_incsearch = augroup("hl-incsearch", { clear = true })
 local hl_yank = augroup("hl-yank", { clear = true })
 

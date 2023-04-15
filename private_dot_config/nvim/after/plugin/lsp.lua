@@ -4,7 +4,7 @@ local lspconfig
 local clangd_fallback_flags = {
     "-xc", "-std=c17", "-Wall", "-Wextra", "-pedantic", "-pedantic-errors",
     "-Wformat=2", "-Wshadow", "-Wstrict-prototypes", "-Wstrict-overflow=2",
-    "-Wredundant-decls", "-Wnested-externs", "-Wcast-qual", "-Wvla",
+    "-Wvla", "-Wredundant-decls", "-Wnested-externs", "-Wcast-qual",
     "-Wfloat-equal", "-Wdouble-promotion", "-Wpointer-arith", "-Wundef",
     "-Winit-self", "-Wwrite-strings", "-Wlogical-op", "-Wno-unused-function",
     "-Wno-empty-translation-unit"
@@ -12,7 +12,7 @@ local clangd_fallback_flags = {
 
 res, lspconfig = pcall(require, "lspconfig")
 if not res then
-    vim.notify("Failed to load lspconfig lua module")
+    vim.notify("Failed to load lua module: lspconfig")
     return
 end
 
@@ -36,7 +36,8 @@ lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
-                globals = { "vim" }
+                globals = { "vim" },
+                disable = { "lowercase-global" }
             },
             telemetry = {
                 enable = false

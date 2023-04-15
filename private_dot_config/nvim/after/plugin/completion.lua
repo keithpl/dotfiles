@@ -7,23 +7,25 @@ local autopairs
 res, autopairs = pcall(require, "nvim-autopairs")
 if res then
     autopairs.setup()
+else
+    vim.notify("Failed to load lua module: nvim-autopairs")
 end
 
 res, cmp = pcall(require, "cmp")
 if not res then
-    vim.notify("Failed to load nvim-cmp lua module")
-    return
-end
-
-res, cmp_window = pcall(require, "cmp.utils.window")
-if not res then
-    vim.notify("Failed to load nvim-cmp.utils.window lua module")
+    vim.notify("Failed to load lua module: nvim-cmp")
     return
 end
 
 res, luasnip = pcall(require, "luasnip")
 if not res then
-    vim.notify("Failed to load luasnip lua module")
+    vim.notify("Failed to load lua module: luasnip")
+    return
+end
+
+res, cmp_window = pcall(require, "cmp.utils.window")
+if not res then
+    vim.notify("Failed to load lua module: nvim-cmp.utils.window")
     return
 end
 
