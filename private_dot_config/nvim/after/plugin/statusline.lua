@@ -46,7 +46,8 @@ lualine.setup({
             right = ""
         },
         disabled_filetypes = {
-            "undotree"
+            "undotree",
+            "NvimTree"
         }
     }
 })

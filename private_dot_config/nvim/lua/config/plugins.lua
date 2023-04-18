@@ -31,6 +31,7 @@ local lazy_plugins = {
     { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
     { "windwp/nvim-autopairs" },
+    { "folke/trouble.nvim" },
 
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },
