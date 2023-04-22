@@ -19,20 +19,21 @@ set $right l
 set $term alacritty
 
 # Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
+# Note: pass the final command to swaymsg so that the resulting window can be
+# opened on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun
 
 set $screenshot grim -g "$(slurp -d)" - | swappy -f -
-
 set $screenrecord screen-record
+set $screenlock swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Default wallpaper
+# (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output "*" bg /usr/share/backgrounds/wallhaven-farcry5.png fill
+output * bg /usr/share/backgrounds/wallhaven-farcry5.png fill
 
 #
 # Example configuration:
@@ -40,8 +41,8 @@ output "*" bg /usr/share/backgrounds/wallhaven-farcry5.png fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output "DP-2" mode 2560x1440@143.998Hz pos 0 0
-output "DP-3" mode 2560x1440@143.998Hz pos 2560 0
+output DP-2 mode 2560x1440@143.998Hz position 0,0
+output DP-3 mode 2560x1440@143.998Hz position 2560,0
 
 ### Idle configuration
 #
@@ -56,10 +57,12 @@ output "DP-3" mode 2560x1440@143.998Hz pos 2560 0
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-    before-sleep 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
-    timeout 300 'swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png' \
-    timeout 330 'swaymsg "output * power off"' \
-    resume 'swaymsg "output DP-2 power on"; sleep 0.3; swaymsg "output DP-3 power on"'
+    before-sleep "$screenlock" \
+    timeout 300 "$screenlock" \
+    timeout 360 'swaymsg "output * power off"' \
+    resume "swaymsg 'output DP-2 power on'; \
+            sleep 0.350; \
+            swaymsg 'output DP-3 power on'"
 
 ### Input configuration
 #
@@ -75,7 +78,7 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input "type:pointer" {
-    accel_profile "flat"
+    accel_profile flat
     pointer_accel 0.25
 }
 
@@ -83,9 +86,6 @@ input "type:keyboard" {
     repeat_rate 50
     repeat_delay 250
 }
-
-# Notification daemon
-exec mako
 
 # GTK theme overrides
 set $gnome-schema org.gnome.desktop.interface
@@ -118,9 +118,11 @@ bindsym $mod+Shift+q kill
 # Start your launcher
 bindsym $mod+d exec $menu
 
+# Lock the screen
+bindsym $mod+Control+q exec $screenlock
+
 bindsym Print exec $screenshot
 bindsym $mod+Shift+s exec $screenshot
-
 bindsym $mod+Print exec $screenrecord
 
 # Volume control bindings
@@ -141,6 +143,7 @@ bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 #
 # Moving around:
 #
@@ -194,9 +197,11 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 
+#
 # Layout stuff:
 #
 # You can "split" the current object of your focus with

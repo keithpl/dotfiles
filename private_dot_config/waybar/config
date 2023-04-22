@@ -17,7 +17,7 @@
 	},
 
 	"cpu": {
-		"interval": 5,
+		"interval": 2,
 		"format": "  {usage}%"
 	},
 
@@ -30,7 +30,7 @@
 	},
 
 	"custom/ram": {
-		"interval": 5,
+		"interval": 3,
 		"format": "  {} MiB",
 		"exec": "free -m | awk '/^Mem/ { print $3 }'"
 	},

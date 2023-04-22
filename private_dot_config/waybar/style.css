@@ -1,10 +1,9 @@
-@define-color blue #1e90ff;
-
 * {
     border: none;
     border-radius: 0;
     font-family: "CaskaydiaCove Nerd Font";
     font-size: 19px;
+    font-weight: 600;
     min-height: 0;
     padding: 0 2px;
 }
@@ -21,6 +20,7 @@ window#waybar {
 #workspaces button {
     padding: 0 5px;
     background: transparent;
+    border-top: 2px solid transparent;
     color: white;
 }
 
@@ -34,7 +34,8 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #keyboard-mode,
+#tray, #mode {
     padding: 0 3px;
     margin: 0 2px;
 }
