@@ -33,3 +33,17 @@ autocmd("LspAttach", {
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     end
 })
+
+local function insert_guard()
+    local file_path = vim.api.nvim_buf_get_name(0)
+    local fname = vim.fs.basename(file_path)
+
+    fname = string.gsub(fname, "[^a-zA-Z0-9]", "_")
+    fname = string.upper(fname)
+
+    vim.cmd("norm ggO#if !defined(" .. fname .. ")")
+    vim.cmd("norm o#define " .. fname)
+    vim.cmd("norm Go#endif /* !defined(" .. fname .. ") */")
+end
+
+vim.keymap.set("n", "<leader>ig", insert_guard)
