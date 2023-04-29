@@ -4,6 +4,9 @@ vim.g.gruvbox_baby_keyword_style = "NONE"
 vim.g.gruvbox_baby_use_original_palette = false
 
 vim.g.gruvbox_baby_highlights = {
+    DiagnosticUnderlineError = {
+        style = { "undercurl" }
+    },
     Whitespace = {
         fg = "#504945"
     },

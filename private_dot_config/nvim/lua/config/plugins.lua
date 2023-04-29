@@ -37,7 +37,7 @@ local lazy_plugins = {
     { "nvim-telescope/telescope.nvim" },
 
     { "mbbill/undotree" },
-    { "tpope/vim-fugitive" }
+    { "lukas-reineke/indent-blankline.nvim" }
 }
 
 local lazy_opts = {}

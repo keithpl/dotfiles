@@ -17,10 +17,12 @@ vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 
-vim.keymap.set("n", "<leader>tt", "<cmd>NvimTreeToggle<cr>")
-vim.keymap.set("n", "<leader>tr", "<cmd>NvimTreeRefresh<cr>")
+vim.keymap.set("n", "<leader>tt", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>tr", vim.cmd.NvimTreeRefresh)
 
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>")
+vim.keymap.set("n", "<leader>ut", vim.cmd.UndotreeToggle)
+
+vim.keymap.set("n", "<leader>xx", vim.cmd.TroubleToggle)
 
 autocmd("LspAttach", {
     group = lsp_mappings,

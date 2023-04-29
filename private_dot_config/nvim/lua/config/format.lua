@@ -1,20 +1,20 @@
 local indentation = augroup("indentation", { clear = true })
 
-local function __set_tab_width(width)
+local function __set_tab_width(width, expand)
     vim.opt_local.tabstop = width
     vim.opt_local.shiftwidth = width
+    vim.opt_local.expandtab = expand
 end
 
 local function set_tab_width(width)
     return function()
-        __set_tab_width(width)
+        __set_tab_width(width, false)
     end
 end
 
 local function set_tab_width_expand(width)
     return function()
-        __set_tab_width(width)
-        vim.opt_local.expandtab = true
+        __set_tab_width(width, true)
     end
 end
 
