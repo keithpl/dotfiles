@@ -18,7 +18,7 @@
 
 	"cpu": {
 		"interval": 2,
-		"format": "  {usage}%"
+		"format": "  {usage}%"
 	},
 
 	"temperature": {
@@ -31,13 +31,13 @@
 
 	"custom/ram": {
 		"interval": 3,
-		"format": "  {} MiB",
+		"format": "  {} MiB",
 		"exec": "free -m | awk '/^Mem/ { print $3 }'"
 	},
 
 	"disk": {
 		"interval": 10,
-		"format": "  {free}"
+		"format": " 󰋊 {percentage_used}%"
 	},
 
 	"sway/window": {
@@ -51,7 +51,7 @@
 		"format-muted": "Muted  ",
 		"format-icons": {
 			"default": "",
-			"hdmi": [ "", "", "墳", "" ]
+			"hdmi": [ "", "", "󰕾", "" ]
 		},
 
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
