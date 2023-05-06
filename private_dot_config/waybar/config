@@ -37,7 +37,7 @@
 
 	"disk": {
 		"interval": 10,
-		"format": " 󰋊 {percentage_used}%"
+		"format": " 󰆼 {percentage_used}%"
 	},
 
 	"sway/window": {
