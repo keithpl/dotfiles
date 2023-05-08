@@ -46,6 +46,7 @@ local function insert_guard()
     vim.cmd("norm ggO#if !defined(" .. fname .. ")")
     vim.cmd("norm o#define " .. fname)
     vim.cmd("norm Go#endif /* !defined(" .. fname .. ") */")
+    vim.cmd("norm k")
 end
 
 vim.keymap.set("n", "<leader>ig", insert_guard)
