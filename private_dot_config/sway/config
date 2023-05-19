@@ -57,12 +57,12 @@ output DP-3 mode 2560x1440@143.998Hz position 2560,0
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w \
-    before-sleep "$screenlock" \
-    timeout 300 "$screenlock" \
-    timeout 360 'swaymsg "output * power off"' \
-    resume "swaymsg 'output DP-2 power on'; \
-            sleep 0.350; \
+exec swayidle -w                                \
+    before-sleep "$screenlock"                  \
+    timeout 300 "$screenlock"                   \
+    timeout 360 "swaymsg 'output * power off"'  \
+    resume "swaymsg 'output DP-2 power on';     \
+            sleep 0.350;                        \
             swaymsg 'output DP-3 power on'"
 
 ### Input configuration
