@@ -9,7 +9,8 @@ end
 
 ts_configs.setup({
     ensure_installed = {
-        "bash", "c", "diff", "lua", "python", "query", "rust", "vim", "vimdoc"
+        "bash", "c", "diff", "go", "lua", "python", "query", "rust",
+        "vim", "vimdoc"
     },
     auto_install = true,
     sync_install = false,
