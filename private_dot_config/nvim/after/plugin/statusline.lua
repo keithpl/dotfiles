@@ -1,19 +1,11 @@
 local res
 local lualine
 local lualine_theme
-local devicons
 
 res, lualine = pcall(require, "lualine")
 if not res then
     vim.notify("Failed to load lua module: lualine")
     return
-end
-
-res, devicons = pcall(require, "nvim-web-devicons")
-if not res then
-    vim.notify("Failed to load lua module: nvim-web-devicons")
-else
-    devicons.setup()
 end
 
 res, lualine_theme = pcall(require, "lualine.themes.gruvbox-baby")
@@ -51,3 +43,4 @@ lualine.setup({
         }
     }
 })
+

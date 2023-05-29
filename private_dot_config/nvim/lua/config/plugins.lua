@@ -17,9 +17,12 @@ local lazy_plugins = {
     { "folke/lazy.nvim" },
 
     { "luisiacc/gruvbox-baby", priority = 1000 },
-    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-tree/nvim-web-devicons", lazy = true },
     { "nvim-tree/nvim-tree.lua" },
+    { "mbbill/undotree" },
     { "nvim-lualine/lualine.nvim" },
+    { "akinsho/bufferline.nvim" },
+    { "lukas-reineke/indent-blankline.nvim" },
 
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-treesitter/playground" },
@@ -35,9 +38,6 @@ local lazy_plugins = {
 
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },
-
-    { "mbbill/undotree" },
-    { "lukas-reineke/indent-blankline.nvim" }
 }
 
 local lazy_opts = {}

@@ -8,8 +8,10 @@ if not res then
 end
 
 ts_configs.setup({
+    ensure_installed = {
+        "bash", "c", "diff", "lua", "python", "query", "rust", "vim", "vimdoc"
+    },
     auto_install = true,
-    ensure_installed = "all",
     sync_install = false,
     indent = {
         enable = false
