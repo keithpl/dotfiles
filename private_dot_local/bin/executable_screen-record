@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-save_path="$HOME/Videos"
+save_path="$(xdg-user-dir VIDEOS)"
 
 if pgrep wf-recorder; then
 	pkill --signal SIGINT wf-recorder > /dev/null
