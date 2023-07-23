@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 setopt append_history
 setopt extended_history
 setopt hist_ignore_dups
@@ -13,28 +11,43 @@ if [[ ! -d "$HISTPATH" ]]; then
 	mkdir -p "$HISTPATH"
 fi
 
+history_get() {
+	fc -rl 1 | awk '{
+		cmd=$0;
+		sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd);
+		if (!seen[cmd]++) print $0
+	}'
+}
+
 history_fzf() {
+	fzf --height 10% \
+	    -n2..,.. \
+	    --scheme=history \
+	    --bind=ctrl-r:toggle-sort,ctrl-z:ignore \
+	    --query=$LBUFFER \
+	    +m
+}
+
+history_fzf_widget() {
 	local ret
-	local candidates
-	local fzf_cmd
-	local history_cmd
+	local num
+	local selected
 
-	setopt extended_glob
-	history_cmd="fc -n -l -1 0 | awk '!seen[\$0]++'"
-	fzf_cmd='fzf --height 10% +m +s -e -q "$BUFFER"'
-	candidates="$(eval "$history_cmd" | eval "$fzf_cmd")"
-	ret="$?"
+	setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases
+	selected=( $(history_get | history_fzf) )
+	ret=$?
 
-	if [[ -n "$candidates" ]]; then
-		BUFFER="$(echo "$candidates" | awk '{ gsub(/\\n/, "\n") }1')"
-		zle vi-fetch-history -n "$BUFFER"
-		zle end-of-line
+	if [[ -n "$selected" ]]; then
+		num="$selected[1]"
+		if [[ -n "$num" ]]; then
+			zle vi-fetch-history -n "$num"
+		fi
 	fi
 
 	zle reset-prompt
 	return $ret
 }
 
-autoload history_fzf
-zle -N history_fzf
-bindkey ^r history_fzf
+autoload history_fzf_widget
+zle -N history_fzf_widget
+bindkey -M emacs '^r' history_fzf_widget
