@@ -60,8 +60,8 @@
 	},
 
 	"clock": {
-		"format": "{:%a %b %d %I:%M:%S %p}",
-		"format-alt": "{:%F %H:%M:%S}",
+		"format": "{:%a %b %d %I:%M:%OS %p}",
+		"format-alt": "{:%F %H:%M:%OS}",
 		"interval": 1,
 		"tooltip": true,
 		"tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>"
