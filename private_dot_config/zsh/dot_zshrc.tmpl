@@ -5,7 +5,14 @@ if [[ $- != *i* ]]; then
 fi
 
 bindkey -e
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 bindkey '^[[Z' end-of-line
+bindkey '^[[1;5D' emacs-backward-word
+bindkey '^[[1;5C' emacs-forward-word
 
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 
