@@ -1,39 +1,52 @@
-vim.opt.encoding = "utf-8"
+local opt = vim.opt
 
-vim.opt.exrc = true
-vim.opt.secure = true
-vim.opt.hidden = true
+-- Undo history and swapfile configuration.
+opt.autowrite = true
+opt.backup = false
+opt.swapfile = false
+opt.undodir = vim.fn.stdpath("state") .. "/undo/"
+opt.undofile = true
+opt.undolevels = 10000
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = vim.fn.stdpath("cache") .. "/undodir"
-vim.opt.undofile = true
+-- Search behavior settings.
+opt.hlsearch = false
+opt.ignorecase = true
+opt.incsearch = true
+opt.magic = true
+opt.smartcase = true
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.magic = true
+-- General editor behavior.
+opt.completeopt = "menu,menuone,preview,noinsert,noselect"
+opt.confirm = false
+opt.clipboard = "unnamedplus"
+opt.errorbells = false
+opt.expandtab = false
+opt.formatoptions:remove("t")
+opt.formatoptions:append("j")
+opt.mouse = "a"
+opt.scrolloff = 8
+opt.shortmess:append("c")
+opt.sidescrolloff = 4
+opt.smartindent = false
+opt.splitbelow = true
+opt.splitright = true
+opt.timeoutlen = 300
+opt.updatetime = 50
+opt.wildmode = "longest:full,full"
+opt.wrap = false
 
-vim.opt.wrap = false
-vim.opt.expandtab = false
-vim.opt.formatoptions:remove("t")
-vim.opt.errorbells = false
-vim.opt.scrolloff = 8
-vim.opt.mouse = "a"
-vim.opt.updatetime = 50
-vim.opt.smartindent = false
-vim.opt.shortmess:append("c")
-vim.opt.completeopt = "menu,menuone,preview,noinsert,noselect"
-
-vim.opt.termguicolors = true
-vim.opt.number = true
-vim.opt.cursorline = true
-vim.opt.showmode = false
-vim.opt.laststatus = 2
-vim.opt.background = "dark"
-vim.opt.colorcolumn = "81"
-vim.opt.signcolumn = "auto"
-vim.opt.cmdheight = 0
-vim.opt.list = true
-vim.opt.listchars = "tab:▸·,trail:~,extends:→,precedes:←,space:␣"
+-- General editor appearance.
+opt.background = "dark"
+opt.cmdheight = 0
+opt.colorcolumn = "81"
+opt.cursorline = true
+opt.laststatus = 2
+opt.list = true
+opt.listchars = "tab:▸·,trail:~,extends:→,precedes:←,space:␣"
+opt.number = true
+opt.pumblend = 10
+opt.pumheight = 10
+opt.relativenumber = false
+opt.showmode = false
+opt.signcolumn = "yes"
+opt.termguicolors = true
