@@ -28,6 +28,10 @@ local function treeshitter_config()
             additional_vim_regex_highlighting = false
         }
     })
+
+    -- Use bash highlighting rules for zsh as zsh support is severely lacking
+    -- at the moment.
+    vim.treesitter.language.register("bash", "zsh")
 end
 
 return {

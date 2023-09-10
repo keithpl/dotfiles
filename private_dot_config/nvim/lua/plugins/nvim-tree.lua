@@ -9,7 +9,6 @@ local function nvim_tree_config()
     vim.keymap.set("n", "<leader>tr", nvim_tree_api.tree.reload)
 
     nvim_tree.setup({})
-
 end
 
 return {

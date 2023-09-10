@@ -2,6 +2,25 @@ local function autocomplete_config()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
+    local cmp_mapping = {
+        ["<C-Up>"] = cmp.mapping.select_prev_item(),
+        ["<C-Down>"] = cmp.mapping.select_next_item(),
+        ["<S-Up>"] = cmp.mapping.select_prev_item(),
+        ["<S-Down>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm(),
+        ["<S-Tab>"] = cmp.mapping.confirm({
+            select = true,
+            behavior = cmp.ConfirmBehavior.Replace
+        })
+    }
+
     cmp.setup({
         experimental = {
             ghost_text = true
@@ -15,21 +34,7 @@ local function autocomplete_config()
                 luasnip.lsp_expand(args.body)
             end
         },
-        mapping = {
-            ["<C-Up>"] = cmp.mapping.select_prev_item(),
-            ["<C-Down>"] = cmp.mapping.select_next_item(),
-            ["<S-Up>"] = cmp.mapping.select_prev_item(),
-            ["<S-Down>"] = cmp.mapping.select_next_item(),
-            ["<C-k>"] = cmp.mapping.select_prev_item(),
-            ["<C-j>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-e>"] = cmp.mapping.abort(),
-            ["<S-Tab>"] = cmp.mapping.confirm({
-                select = true,
-                behavior = cmp.ConfirmBehavior.Replace
-            })
-        },
+        mapping = cmp_mapping,
         sources = cmp.config.sources({
             { name = "nvim_lsp" },
             { name = "nvim_lsp_signature_help" },
@@ -41,7 +46,8 @@ end
 
 return {
     "hrsh7th/nvim-cmp",
-    lazy = false,
+    lazy = true,
+    event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",

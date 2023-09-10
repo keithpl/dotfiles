@@ -15,7 +15,7 @@ opt.incsearch = true
 opt.magic = true
 opt.smartcase = true
 
--- General editor behavior.
+-- General text editing behavior.
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 opt.confirm = false
 opt.clipboard = "unnamedplus"
@@ -42,7 +42,7 @@ opt.colorcolumn = "81"
 opt.cursorline = true
 opt.laststatus = 2
 opt.list = true
-opt.listchars = "tab:▸·,trail:~,extends:→,precedes:←,space:␣"
+opt.listchars = "tab:▸·,trail:~,extends:→,precedes:←,nbsp:␣"
 opt.number = true
 opt.pumblend = 10
 opt.pumheight = 10

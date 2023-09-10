@@ -2,6 +2,7 @@ local function trouble_config()
     local trouble = require("trouble")
 
     vim.keymap.set("n", "<leader>xx", trouble.toggle)
+
     vim.keymap.set("n", "<leader>xw", function()
         trouble.toggle("workspace_diagnostics")
     end)
@@ -23,9 +24,17 @@ end
 
 return {
     "folke/trouble.nvim",
-    lazy = false,
+    lazy = true,
     dependencies = {
         "nvim-tree/nvim-web-devicons"
+    },
+    keys = {
+        { "<leader>xx" },
+        { "<leader>xw" },
+        { "<leader>xd" },
+        { "<leader>xq" },
+        { "<leader>xl" },
+        { "<leader>gR" }
     },
     config = trouble_config
 }

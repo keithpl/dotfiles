@@ -12,9 +12,15 @@ end
 
 return {
     "nvim-telescope/telescope.nvim",
-    lazy = false,
+    lazy = true,
     dependencies = {
         "nvim-lua/plenary.nvim"
+    },
+    keys = {
+        { "<leader>ff" },
+        { "<leader>fg" },
+        { "<leader>fb" },
+        { "<leader>fh" }
     },
     config = telescope_config
 }

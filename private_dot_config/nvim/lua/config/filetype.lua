@@ -16,22 +16,35 @@ local function set_indent_width_expand(width)
     end
 end
 
-local custom_indent = vim.api.nvim_create_augroup("custom-indent", {
+local custom_filetype = vim.api.nvim_create_augroup("custom-filetype", {
     clear = true
 })
 
 local function set_filetype_indent(pattern, callback)
     vim.api.nvim_create_autocmd("FileType", {
-        group = custom_indent,
+        group = custom_filetype,
         pattern = pattern,
         callback = callback
     })
 end
 
--- Aggressively ensure '*.h' and '*.c' files are treated as C, not C++ or
--- ObjC, or anybody else who decides to hijack these extensions.
+-- Enable spell checking and text wrapping on specific file types.
+vim.api.nvim_create_autocmd("FileType", {
+    group = custom_filetype,
+    pattern = {
+        "gitcommit",
+        "markdown"
+    },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end
+})
+
+-- Aggressively ensure '*.h' and '*.c' files are treated as C, not C++, ObjC,
+-- or anybody else who decides to hijack these extensions.
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
-    group = custom_indent,
+    group = custom_filetype,
     pattern = "*.c,*.h",
     callback = function()
         vim.opt_local.filetype = "c"
