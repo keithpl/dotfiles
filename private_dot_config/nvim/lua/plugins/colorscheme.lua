@@ -1,3 +1,17 @@
+local function tokyonight_highlights(highlights, colors)
+    local c_preproc = {
+        fg = colors.red
+    }
+
+    highlights["@preproc.c"] = c_preproc
+    highlights["@define.c"] = c_preproc
+    highlights["@include.c"] = c_preproc
+
+    highlights["@variable"] = {
+        fg = colors.blue2
+    }
+end
+
 local function tokyonight_config()
     local tokyonight = require("tokyonight")
 
@@ -13,7 +27,8 @@ local function tokyonight_config()
         },
         on_colors = function(colors)
             colors.bg = "#202232"
-        end
+        end,
+        on_highlights = tokyonight_highlights
     })
 
     vim.cmd("colorscheme tokyonight")
