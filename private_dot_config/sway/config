@@ -86,6 +86,7 @@ input "type:pointer" {
 input "type:keyboard" {
     repeat_rate 50
     repeat_delay 250
+    xkb_options caps:escape
 }
 
 # GTK theme overrides

@@ -1,8 +1,8 @@
-local function colorscheme_config()
+local function tokyonight_config()
     local tokyonight = require("tokyonight")
 
     tokyonight.setup({
-        style = "night",
+        style = "moon",
         styles = {
             keywords = {
                 italic = false
@@ -10,7 +10,10 @@ local function colorscheme_config()
             functions = {
                 bold = true
             }
-        }
+        },
+        on_colors = function(colors)
+            colors.bg = "#202232"
+        end
     })
 
     vim.cmd("colorscheme tokyonight")
@@ -20,5 +23,5 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    config = colorscheme_config
+    config = tokyonight_config
 }
