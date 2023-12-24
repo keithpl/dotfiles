@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-if ! pgrep slurp; then
-	slurp "$@"
+# Only run one instance of slurp at a time.
+if pgrep slurp; then
+	exit 1
 fi
+
+slurp "$@"

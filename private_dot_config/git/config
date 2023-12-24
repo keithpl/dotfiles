@@ -1,6 +1,8 @@
 [user]
-	name =
-	email =
-	signingkey =
+	name = Keith Plant
+	email = kplantjr@gmail.com
+	signingkey = kplantjr
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = master

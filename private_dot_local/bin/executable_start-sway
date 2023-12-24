@@ -19,4 +19,6 @@ export __GL_GSYNC_ALLOWED=0
 export __GL_VRR_ALLOWED=0
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
+export XWAYLAND_NO_GLAMOR=1
+
 dbus-run-session sway --unsupported-gpu "$@"

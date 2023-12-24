@@ -2,12 +2,32 @@
 
 save_path="$(xdg-user-dir VIDEOS)"
 
-if pgrep wf-recorder; then
-	pkill --signal SIGINT wf-recorder > /dev/null
-	notify-send "wf-record" "Screen recording saved in $save_path"
-	exit 0
-fi
+check_active_recording() {
+	if pgrep wf-recorder; then
+		pkill --signal SIGINT wf-recorder > /dev/null
+		notify-send "wf-record" "Screen recording saved in $save_path"
+		exit 0
+	fi
+}
 
-output="$save_path/screencast-$(date +%Y%m%d-%H%M%S).mp4"
+start_new_recording() {
+	local ret
+	local output
+	local geometry
 
-wf-recorder -f "$output" -g "$(slurp)"
+	output="$save_path/recording-$(date +%Y%m%d-%H%M%S).mp4"
+	geometry="$(slurp-safe)"
+	ret="$?"
+	if [[ ! "$ret" -eq "0" ]]; then
+		exit 1
+	fi
+
+	wf-recorder -f "$output" -g "$geometry"
+}
+
+main() {
+	check_active_recording
+	start_new_recording
+}
+
+main "$@"
