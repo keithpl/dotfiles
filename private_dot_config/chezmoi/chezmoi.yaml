@@ -1,3 +1,0 @@
-merge:
-  command: "nvim"
-  args: [ "-d", "-c", "tabdo windo set nolist" ]

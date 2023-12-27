@@ -1,6 +1,6 @@
 local function autocomplete_config()
     local cmp = require("cmp")
-    local luasnip = require("luasnip")
+--    local luasnip = require("luasnip")
 
     local cmp_mapping = {
         ["<C-Up>"] = cmp.mapping.select_prev_item(),
@@ -29,16 +29,16 @@ local function autocomplete_config()
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered()
         },
-        snippet = {
-            expand = function(args)
-                luasnip.lsp_expand(args.body)
-            end
-        },
+ --       snippet = {
+ --           expand = function(args)
+ --               luasnip.lsp_expand(args.body)
+ --           end
+ --       },
         mapping = cmp_mapping,
         sources = cmp.config.sources({
             { name = "nvim_lsp" },
             { name = "nvim_lsp_signature_help" },
-            { name = "luasnip" },
+ --           { name = "luasnip" },
             { name = "buffer" }
         })
     })
@@ -52,7 +52,7 @@ return {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        "L3MON4D3/LuaSnip",
+--        "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip"
     },
     config = autocomplete_config

@@ -38,14 +38,9 @@ alias history='history -i'
 alias tb='nc termbin.com 9999'
 alias ls='eza -g --group-directories-first'
 alias tree='eza --tree'
-
-{{- if eq .chezmoi.os "linux" }}
 alias ip='ip -color=auto'
 alias dmesg='dmesg --color=always'
 alias weechat='firejail --private="$XDG_DATA_HOME/firejail/weechat" -- weechat'
-{{- else if eq .chezmoi.os "darwin" }}
-alias brewup='brew cleanup; brew doctor && brew update && brew upgrade'
-{{- end }}
 
 source "$ZDOTDIR/history.zsh"
 source "$ZDOTDIR/zinit-install.zsh"
@@ -54,11 +49,6 @@ zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
-
-{{ if eq .chezmoi.os "darwin" -}}
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-{{ end -}}
 
 # Launch tmux if not already running within tmux, do not spawn tmux
 # when remotely accessing via ssh.
