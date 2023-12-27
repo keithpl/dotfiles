@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# I got tired of needing a windows instance to create bootable USB media
+# with the windows installer, so I wrote this piece of crap script instead.
+
+set -eEou pipefail
+
+declare iso
+declare usb
+
+mnt_dir="/mnt/mk_win_usb_tmp/"
+mnt_iso="$mnt_dir/iso/"
+mnt_vfat="$mnt_dir/vfat/"
+mnt_ntfs="$mnt_dir/ntfs/"
+
+usage() {
+	echo "Create bootable usb media from the windows install ISO."
+	echo "Usage: $0 <iso> <usb_drive>"
+	echo
+}
+
+usb_partition() {
+	wipefs -af "$usb"*
+	cat <<- EOF | parted "$usb"
+		mklabel gpt
+		mkpart BOOT fat32 0% 1GiB
+		mkpart INSTALL ntfs 1GiB 10GiB
+		quit
+	EOF
+}
+
+usb_format() {
+	mkfs.vfat -n BOOT "${usb}1"
+	mkfs.ntfs --quick -L INSTALL "${usb}2"
+}
+
+usb_mount() {
+	mount --mkdir "${usb}1" "$mnt_vfat"
+	mount --mkdir "${usb}2" "$mnt_ntfs"
+}
+
+iso_mount() {
+	mount --mkdir "$iso" "$mnt_iso"
+}
+
+iso_copy_to_usb() {
+	rsync -r --progress --exclude sources --delete-before \
+		"$mnt_iso" "$mnt_vfat"
+
+	mkdir "$mnt_vfat/sources"
+	cp -v "$mnt_iso/sources/boot.wim" "$mnt_vfat/sources/"
+
+	rsync -r --progress --delete-before "$mnt_iso" "$mnt_ntfs"
+	sync
+}
+
+cleanup() {
+	umount "$mnt_iso"
+	umount "$mnt_vfat"
+	umount "$mnt_ntfs"
+
+	rm -rf "$mnt_iso" "$mnt_vfat" "$mnt_ntfs"
+}
+
+main() {
+	if [[ "$#" -ne 2 ]]; then
+		usage
+		exit 1
+	fi
+
+	if [[ "$EUID" -ne 0 ]]; then
+		echo "$0 must be ran as root."
+		exit 1
+	fi
+
+	iso="$1"
+	usb="$2"
+
+	set -x
+
+	usb_partition
+	usb_format
+	usb_mount
+
+	iso_mount
+	iso_copy_to_usb
+	cleanup
+}
+
+main "$@"
