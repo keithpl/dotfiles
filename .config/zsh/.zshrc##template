@@ -40,7 +40,19 @@ alias ls='eza -g --group-directories-first'
 alias tree='eza --tree'
 alias ip='ip -color=auto'
 alias dmesg='dmesg --color=always'
+
+{% if yadm.os == "Linux" %}
 alias weechat='firejail --private="$XDG_DATA_HOME/firejail/weechat" -- weechat'
+{% endif %}
+
+{% if yadm.os == "Darwin" %}
+brewup() {
+	brew cleanup
+	brew doctor
+	brew update
+	brew upgrade
+}
+{% endif %}
 
 source "$ZDOTDIR/history.zsh"
 source "$ZDOTDIR/zinit-install.zsh"
