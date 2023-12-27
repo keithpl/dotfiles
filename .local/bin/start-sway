@@ -11,7 +11,7 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
 export MOZ_DISABLE_RDD_SANDBOX=1
 export LIBVA_DRIVER_NAME="nvidia"
-#export NVD_BACKEND="direct"
+export NVD_BACKEND="direct"
 
 export WLR_RENDERER="vulkan"
 export WLR_NO_HARDWARE_CURSORS=1
