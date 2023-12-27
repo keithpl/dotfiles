@@ -58,7 +58,7 @@ cleanup() {
 	umount "$mnt_vfat"
 	umount "$mnt_ntfs"
 
-	rm -rf "$mnt_iso" "$mnt_vfat" "$mnt_ntfs"
+	rm -rf "$mnt_dir"
 }
 
 main() {
