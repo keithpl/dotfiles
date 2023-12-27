@@ -52,6 +52,8 @@ brewup() {
 	brew update
 	brew upgrade
 }
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 {% endif %}
 
 source "$ZDOTDIR/history.zsh"
