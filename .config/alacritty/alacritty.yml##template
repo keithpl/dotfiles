@@ -9,11 +9,19 @@ env:
   TERM: xterm-256color
 
 font:
+{% if yadm.os == "Darwin" %}
+  size: 15
+
+  normal:
+    family: CaskaydiaCove Nerd Font
+    style: SemiLight
+{% else %}
   size: 12
 
   normal:
     family: Cascadia Code
     style: Medium
+{% endif %}
 
   offset:
     x: 0
