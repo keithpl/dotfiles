@@ -5,8 +5,6 @@ sparse_patterns=("/*" "!README.md" "!LICENSE")
 yadm gitconfig core.sparseCheckout true
 yadm sparse-checkout set "${sparse_patterns[@]}"
 
-ignore_patterns=(".zcompdump")
-
-for pattern in "${ignore_patterns[@]}"; do
-	echo "$pattern" >> "$HOME/.local/share/yadm/repo.git/info/exclude"
-done
+# Ignore everything by default. Adding an item that is currently not tracked
+# will require supplying the '-f' flag.
+echo "*" >> "$HOME/.local/share/yadm/repo.git/info/exclude"
