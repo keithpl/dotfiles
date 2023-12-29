@@ -1,4 +1,6 @@
-local lsp_keymap = vim.api.nvim_create_augroup("lsp-keymap", { clear = true })
+local lsp_keymap = vim.api.nvim_create_augroup("lsp-keymap", {
+    clear = true
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_keymap,
@@ -14,7 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
-local lsp_clangd_flags = {
+local lsp_clangd_fallbackflags = {
     "-xc", "-std=c17", "-Wall", "-Wextra", "-pedantic", "-pedantic-errors",
     "-Wformat=2", "-Wshadow", "-Wstrict-prototypes", "-Wstrict-overflow=2",
     "-Wvla", "-Wredundant-decls", "-Wnested-externs", "-Wcast-qual",
@@ -23,14 +25,12 @@ local lsp_clangd_flags = {
     "-Wno-empty-translation-unit"
 }
 
-local function lsp_config()
-    local lspconfig = require("lspconfig")
+local lsp_server_configs = {
+    bashls = {},
+    pyright = {},
+    rust_analyzer = {},
 
-    lspconfig.bashls.setup({})
-    lspconfig.pyright.setup({})
-    lspconfig.rust_analyzer.setup({})
-
-    lspconfig.clangd.setup({
+    clangd = {
         cmd = {
             "clangd",
             "--background-index",
@@ -38,11 +38,11 @@ local function lsp_config()
             "--header-insertion-decorators=false"
         },
         init_options = {
-            fallbackFlags = lsp_clangd_flags
+            fallbackFlags = lsp_clangd_fallbackflags
         }
-    })
+    },
 
-    lspconfig.lua_ls.setup({
+    lua_ls = {
         settings = {
             Lua = {
                 diagnostics = {
@@ -50,10 +50,30 @@ local function lsp_config()
                 },
                 telemetry = {
                     enable = false
+                },
+                workspace = {
+                    checkThirdParty = false
                 }
             }
         }
-    })
+    }
+}
+
+local function lsp_config()
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local lspconfig = require("lspconfig")
+    local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    lsp_capabilities = cmp_nvim_lsp.default_capabilities(lsp_capabilities)
+
+    local function lsp_configure_server(server, config)
+        config.capabilities = lsp_capabilities
+        lspconfig[server].setup(config)
+    end
+
+    for name, config in pairs(lsp_server_configs) do
+        lsp_configure_server(name, config)
+    end
 end
 
 return {

@@ -4,6 +4,7 @@ local function nvim_tree_config()
 
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
+    vim.g.loaded_netrwSettings = 1
 
     vim.keymap.set("n", "<leader>tt", nvim_tree_api.tree.toggle)
     vim.keymap.set("n", "<leader>tr", nvim_tree_api.tree.reload)

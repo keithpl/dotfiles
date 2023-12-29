@@ -15,10 +15,11 @@ vim.opt.rtp:prepend(lazy_path)
 
 local lazy = require("lazy")
 
--- Manually require `~/.config/nvim/lua/plugins/init.lua` to allow the order
--- of plugin initialization to be specified and preserved. Calling something
--- like `require("lazy").setup("plugins")` would instead require all matches
--- for `~/.config/nvim/lua/plugins/*.lua` in alphabetical order.
+-- Manually require '$HOME/.config/nvim/lua/plugins/init.lua' to allow the
+-- order of plugin initialization to be specified and preserved. Calling
+-- something like 'require("lazy").setup("plugins")' would instead require
+-- all matches for '$HOME/.config/nvim/lua/plugins/*.lua' in alphabetical
+-- order.
 local lazy_plugins = require("plugins")
 
 lazy.setup(lazy_plugins)

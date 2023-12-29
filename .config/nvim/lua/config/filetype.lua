@@ -4,13 +4,13 @@ local function __set_indent_width(width, expand)
     vim.opt_local.expandtab = expand
 end
 
-local function set_indent_width(width)
+local function set_indent_width_tabs(width)
     return function()
         __set_indent_width(width, false)
     end
 end
 
-local function set_indent_width_expand(width)
+local function set_indent_width_spaces(width)
     return function()
         __set_indent_width(width, true)
     end
@@ -28,7 +28,8 @@ local function set_filetype_indent(pattern, callback)
     })
 end
 
--- Enable spell checking and text wrapping on specific file types.
+-- Enable spell checking and text wrapping on file types where I actually
+-- want it.
 vim.api.nvim_create_autocmd("FileType", {
     group = custom_filetype,
     pattern = {
@@ -41,9 +42,9 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
--- Aggressively ensure '*.h' and '*.c' files are treated as C, not C++, ObjC,
--- or anybody else who decides to hijack these extensions.
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
+-- Aggressively ensure '*.c' and '*.h' files are treated as C, not C++,
+-- not ObjC, or anybody else who decides to hijack these extensions.
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile"}, {
     group = custom_filetype,
     pattern = "*.c,*.h",
     callback = function()
@@ -53,17 +54,18 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
     end
 })
 
-set_filetype_indent("c",            set_indent_width(8))
-set_filetype_indent("sh",           set_indent_width(8))
-set_filetype_indent("zsh",          set_indent_width(8))
+set_filetype_indent("c",            set_indent_width_tabs(8))
+set_filetype_indent("bash",         set_indent_width_tabs(8))
+set_filetype_indent("sh",           set_indent_width_tabs(8))
+set_filetype_indent("zsh",          set_indent_width_tabs(8))
 
-set_filetype_indent("json",         set_indent_width_expand(4))
-set_filetype_indent("lua",          set_indent_width_expand(4))
-set_filetype_indent("python",       set_indent_width_expand(4))
-set_filetype_indent("swayconfig",   set_indent_width_expand(4))
-set_filetype_indent("vim",          set_indent_width_expand(4))
+set_filetype_indent("json",         set_indent_width_spaces(4))
+set_filetype_indent("lua",          set_indent_width_spaces(4))
+set_filetype_indent("python",       set_indent_width_spaces(4))
+set_filetype_indent("swayconfig",   set_indent_width_spaces(4))
+set_filetype_indent("vim",          set_indent_width_spaces(4))
 
-set_filetype_indent("html",         set_indent_width_expand(2))
-set_filetype_indent("toml",         set_indent_width_expand(2))
-set_filetype_indent("xml",          set_indent_width_expand(2))
-set_filetype_indent("yaml",         set_indent_width_expand(2))
+set_filetype_indent("html",         set_indent_width_spaces(2))
+set_filetype_indent("toml",         set_indent_width_spaces(2))
+set_filetype_indent("xml",          set_indent_width_spaces(2))
+set_filetype_indent("yaml",         set_indent_width_spaces(2))

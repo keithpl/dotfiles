@@ -1,7 +1,9 @@
 local function autopairs_config()
     local autopairs = require("nvim-autopairs")
 
-    autopairs.setup({})
+    autopairs.setup({
+        check_ts = true
+    })
 end
 
 return {

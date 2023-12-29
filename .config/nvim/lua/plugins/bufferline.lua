@@ -3,7 +3,6 @@ local function bufferline_config()
 
     bufferline.setup({
         options = {
-            separator_style = "slant",
             offsets = {
                 {
                     filetype = "NvimTree",
@@ -24,6 +23,7 @@ end
 
 return {
     "akinsho/bufferline.nvim",
+    version = "*",
     lazy = false,
     dependencies = {
         "nvim-tree/nvim-web-devicons"

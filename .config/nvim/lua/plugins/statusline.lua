@@ -4,15 +4,12 @@ local function statusline_config()
     lualine.setup({
         options = {
             icons_enabled = true,
-            theme = "codedark",
-            section_separators = {},
-            component_separators = {
-                left = "|",
-                right = "|"
-            },
+            theme = "sonokai",
+            section_separators = "",
+            component_separators = "|",
             disabled_filetypes = {
-                "undotree",
-                "NvimTree"
+                "NvimTree",
+                "undotree"
             }
         }
     })

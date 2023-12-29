@@ -8,7 +8,7 @@ opt.undodir = vim.fn.stdpath("state") .. "/undo/"
 opt.undofile = true
 opt.undolevels = 10000
 
--- Search behavior settings.
+-- Search behavior configuration.
 opt.hlsearch = false
 opt.ignorecase = true
 opt.incsearch = true
@@ -16,6 +16,7 @@ opt.magic = true
 opt.smartcase = true
 
 -- General text editing behavior.
+opt.breakindent = true
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 opt.confirm = false
 opt.clipboard = "unnamedplus"
@@ -31,11 +32,11 @@ opt.smartindent = false
 opt.splitbelow = true
 opt.splitright = true
 opt.timeoutlen = 300
-opt.updatetime = 50
+opt.updatetime = 250
 opt.wildmode = "longest:full,full"
 opt.wrap = false
 
--- General editor appearance.
+-- Editor appearance.
 opt.background = "dark"
 opt.cmdheight = 0
 opt.colorcolumn = "81"
