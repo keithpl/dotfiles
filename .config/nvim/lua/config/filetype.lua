@@ -28,8 +28,8 @@ local function set_filetype_indent(pattern, callback)
     })
 end
 
--- Enable spell checking and text wrapping on file types where I actually
--- want it.
+-- Enable spell checking and text wrapping only on the files where I
+-- actually want it.
 vim.api.nvim_create_autocmd("FileType", {
     group = custom_filetype,
     pattern = {
@@ -42,9 +42,9 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
--- Aggressively ensure '*.c' and '*.h' files are treated as C, not C++,
--- not ObjC, or anybody else who decides to hijack these extensions.
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile"}, {
+-- Aggressively ensure '*.c' and '*.h' files are treated as C and not as
+-- C++, not ObjC, or anybody else who decides to hijack these extensions.
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
     group = custom_filetype,
     pattern = "*.c,*.h",
     callback = function()
@@ -54,8 +54,8 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile"}, {
     end
 })
 
-set_filetype_indent("c",            set_indent_width_tabs(8))
 set_filetype_indent("bash",         set_indent_width_tabs(8))
+set_filetype_indent("c",            set_indent_width_tabs(8))
 set_filetype_indent("sh",           set_indent_width_tabs(8))
 set_filetype_indent("zsh",          set_indent_width_tabs(8))
 

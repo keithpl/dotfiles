@@ -15,7 +15,7 @@ opt.incsearch = true
 opt.magic = true
 opt.smartcase = true
 
--- General text editing behavior.
+-- Configuration for general text editing behavior.
 opt.breakindent = true
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 opt.confirm = false
@@ -26,17 +26,19 @@ opt.formatoptions:remove("t")
 opt.formatoptions:append("j")
 opt.mouse = "a"
 opt.scrolloff = 8
+opt.shiftwidth = 8
 opt.shortmess:append("c")
 opt.sidescrolloff = 4
 opt.smartindent = false
 opt.splitbelow = true
 opt.splitright = true
+opt.tabstop = 8
 opt.timeoutlen = 300
 opt.updatetime = 250
 opt.wildmode = "longest:full,full"
 opt.wrap = false
 
--- Editor appearance.
+-- Editor appearance options.
 opt.background = "dark"
 opt.cmdheight = 0
 opt.colorcolumn = "81"

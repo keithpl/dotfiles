@@ -7,20 +7,14 @@ local function telescope_config()
     vim.keymap.set("n", "<leader>fb", builtin.buffers)
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
 
-    telescope.setup({})
+    telescope.setup()
 end
 
 return {
     "nvim-telescope/telescope.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = {
         "nvim-lua/plenary.nvim"
-    },
-    keys = {
-        { "<leader>ff" },
-        { "<leader>fg" },
-        { "<leader>fb" },
-        { "<leader>fh" }
     },
     config = telescope_config
 }

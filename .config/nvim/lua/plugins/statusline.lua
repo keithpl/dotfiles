@@ -1,4 +1,4 @@
-local function statusline_config()
+local function lualine_config()
     local lualine = require("lualine")
 
     lualine.setup({
@@ -8,7 +8,6 @@ local function statusline_config()
             section_separators = "",
             component_separators = "|",
             disabled_filetypes = {
-                "NvimTree",
                 "undotree"
             }
         }
@@ -21,5 +20,5 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons"
     },
-    config = statusline_config
+    config = lualine_config
 }

@@ -50,8 +50,7 @@ end
 
 return {
     "hrsh7th/nvim-cmp",
-    lazy = true,
-    event = "InsertEnter",
+    lazy = false,
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",

@@ -30,12 +30,12 @@ local cmdheight_macro = vim.api.nvim_create_augroup("cmdheight-macro", {
     clear = true
 })
 
-local function cmdheight_autocmd(value)
+local function cmdheight_autocmd(height)
     return {
         group = cmdheight_macro,
         callback = function()
             vim.schedule(function()
-                vim.opt_local.cmdheight = value
+                vim.opt_local.cmdheight = height
             end)
         end
     }
@@ -44,8 +44,8 @@ end
 vim.api.nvim_create_autocmd("RecordingEnter", cmdheight_autocmd(1))
 vim.api.nvim_create_autocmd("RecordingLeave", cmdheight_autocmd(0))
 
--- Highlight matched text while constructing a search command, remove highlight
--- once the search is executed.
+-- Highlight matched text while construction a search command, remove
+-- highlight once the search is completed.
 local hl_search = vim.api.nvim_create_augroup("hl-search", {
     clear = true
 })
