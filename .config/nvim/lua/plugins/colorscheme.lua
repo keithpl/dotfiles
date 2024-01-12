@@ -11,7 +11,6 @@ end
 
 return {
     "sainnhe/sonokai",
-    lazy = false,
     priority = 1000,
     config = sonokai_config
 }

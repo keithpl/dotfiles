@@ -1,34 +1,8 @@
-local function __set_indent_width(width, expand)
-    vim.opt_local.tabstop = width
-    vim.opt_local.shiftwidth = width
-    vim.opt_local.expandtab = expand
-end
-
-local function set_indent_width_tabs(width)
-    return function()
-        __set_indent_width(width, false)
-    end
-end
-
-local function set_indent_width_spaces(width)
-    return function()
-        __set_indent_width(width, true)
-    end
-end
-
 local custom_filetype = vim.api.nvim_create_augroup("custom-filetype", {
     clear = true
 })
 
-local function set_filetype_indent(pattern, callback)
-    vim.api.nvim_create_autocmd("FileType", {
-        group = custom_filetype,
-        pattern = pattern,
-        callback = callback
-    })
-end
-
--- Enable spell checking and text wrapping only on the files where I
+-- Enable spell checking and text wrapping only on the file types where I
 -- actually want it.
 vim.api.nvim_create_autocmd("FileType", {
     group = custom_filetype,
@@ -37,13 +11,13 @@ vim.api.nvim_create_autocmd("FileType", {
         "markdown"
     },
     callback = function()
-        vim.opt_local.wrap = true
         vim.opt_local.spell = true
+        vim.opt_local.wrap = true
     end
 })
 
--- Aggressively ensure '*.c' and '*.h' files are treated as C and not as
--- C++, not ObjC, or anybody else who decides to hijack these extensions.
+-- Aggressively ensure '*.c' and "*.h' files are treated as C and not as
+-- C++, ObjC, or anybody else who decides to hijack these extensions.
 vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
     group = custom_filetype,
     pattern = "*.c,*.h",
@@ -54,18 +28,44 @@ vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead", "BufNewFile" }, {
     end
 })
 
-set_filetype_indent("bash",         set_indent_width_tabs(8))
-set_filetype_indent("c",            set_indent_width_tabs(8))
-set_filetype_indent("sh",           set_indent_width_tabs(8))
-set_filetype_indent("zsh",          set_indent_width_tabs(8))
+local function __set_indent_width_expand(width, expand)
+    vim.opt_local.tabstop = width
+    vim.opt_local.shiftwidth = width
+    vim.opt_local.expandtab = expand
+end
 
-set_filetype_indent("json",         set_indent_width_spaces(4))
-set_filetype_indent("lua",          set_indent_width_spaces(4))
-set_filetype_indent("python",       set_indent_width_spaces(4))
-set_filetype_indent("swayconfig",   set_indent_width_spaces(4))
-set_filetype_indent("toml",         set_indent_width_spaces(4))
-set_filetype_indent("vim",          set_indent_width_spaces(4))
+local function set_indent_width_tabs(width)
+    return function()
+        __set_indent_width_expand(width, false)
+    end
+end
 
-set_filetype_indent("html",         set_indent_width_spaces(2))
-set_filetype_indent("xml",          set_indent_width_spaces(2))
-set_filetype_indent("yaml",         set_indent_width_spaces(2))
+local function set_indent_width_spaces(width)
+    return function()
+        __set_indent_width_expand(width, true)
+    end
+end
+
+local function set_filetype_callback(pattern, callback)
+    vim.api.nvim_create_autocmd("FileType", {
+        group = custom_filetype,
+        pattern = pattern,
+        callback = callback
+    })
+end
+
+set_filetype_callback("bash",       set_indent_width_tabs(8))
+set_filetype_callback("c",          set_indent_width_tabs(8))
+set_filetype_callback("sh",         set_indent_width_tabs(8))
+set_filetype_callback("zsh",        set_indent_width_tabs(8))
+
+set_filetype_callback("json",       set_indent_width_spaces(4))
+set_filetype_callback("lua",        set_indent_width_spaces(4))
+set_filetype_callback("python",     set_indent_width_spaces(4))
+set_filetype_callback("swayconfig", set_indent_width_spaces(4))
+set_filetype_callback("toml",       set_indent_width_spaces(4))
+set_filetype_callback("vim",        set_indent_width_spaces(4))
+
+set_filetype_callback("html",       set_indent_width_spaces(2))
+set_filetype_callback("xml",        set_indent_width_spaces(2))
+set_filetype_callback("yaml",       set_indent_width_spaces(2))

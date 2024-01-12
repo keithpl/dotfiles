@@ -9,6 +9,7 @@ local clangd_fallbackflags = {
 
 local lsp_server_configs = {
     bashls = {},
+    gopls = {},
     pyright = {},
     rust_analyzer = {},
 
@@ -57,7 +58,6 @@ end
 
 return {
     "neovim/nvim-lspconfig",
-    lazy = false,
     dependencies = {
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp"

@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Temporarily adjust cmdheight to a non-zero value to display the
 -- "recording @macro..." message during macro recording. This workaround
 -- is only necessary when cmdheight is set to 0.
-local cmdheight_macro = vim.api.nvim_create_augroup("cmdheight-macro", {
+local cmdheight_fixes = vim.api.nvim_create_augroup("cmdheight-fixes", {
     clear = true
 })
 
@@ -44,8 +44,8 @@ end
 vim.api.nvim_create_autocmd("RecordingEnter", cmdheight_autocmd(1))
 vim.api.nvim_create_autocmd("RecordingLeave", cmdheight_autocmd(0))
 
--- Highlight matched text while construction a search command, remove
--- highlight once the search is completed.
+-- Highlight all matches while searching, remove the highlight once the
+-- search has completed.
 local hl_search = vim.api.nvim_create_augroup("hl-search", {
     clear = true
 })

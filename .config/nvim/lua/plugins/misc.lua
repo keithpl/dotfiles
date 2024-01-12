@@ -1,39 +1,10 @@
+-- Simple plugins that don't have any advanced configuration or dependencies.
+
 return {
-    {
-        "tpope/vim-fugitive",
-        lazy = false
-    },
-
-    {
-        "lewis6991/gitsigns.nvim",
-        lazy = false,
-        opts = {}
-    },
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        lazy = false,
-        main = "ibl",
-        opts = {}
-    },
-
-    {
-        "numToStr/Comment.nvim",
-        lazy = false,
-        opts = {}
-    },
-
-    {
-        "j-hui/fidget.nvim",
-        lazy = false,
-        opts = {}
-    },
-
-    {
-        "mbbill/undotree",
-        lazy = true,
-        keys = {
-            { "<leader>ut", vim.cmd.UndotreeToggle }
-        }
-    }
+    { "mbbill/undotree" },
+    { "tpope/vim-fugitive" },
+    { "lewis6991/gitsigns.nvim", opts = {} },
+    { "numToStr/Comment.nvim", opts = {} },
+    { "j-hui/fidget.nvim", opts = {} },
+    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
 }

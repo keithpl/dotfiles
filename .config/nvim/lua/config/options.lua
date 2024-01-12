@@ -1,6 +1,6 @@
 local opt = vim.opt
 
--- Undo history and swapfile configuration.
+-- Undo history configuration; disable swapfile.
 opt.autowrite = true
 opt.backup = false
 opt.swapfile = false
@@ -8,14 +8,14 @@ opt.undodir = vim.fn.stdpath("state") .. "/undo/"
 opt.undofile = true
 opt.undolevels = 10000
 
--- Search behavior configuration.
+-- Search behavior.
 opt.hlsearch = false
 opt.ignorecase = true
 opt.incsearch = true
 opt.magic = true
 opt.smartcase = true
 
--- Configuration for general text editing behavior.
+-- Text editing behavior.
 opt.breakindent = true
 opt.completeopt = "menu,menuone,preview,noinsert,noselect"
 opt.confirm = false
@@ -38,7 +38,7 @@ opt.updatetime = 250
 opt.wildmode = "longest:full,full"
 opt.wrap = false
 
--- Editor appearance options.
+-- Editor appearance.
 opt.background = "dark"
 opt.cmdheight = 0
 opt.colorcolumn = "81"

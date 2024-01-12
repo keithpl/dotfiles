@@ -42,6 +42,7 @@ local function autocomplete_config()
         sources = cmp.config.sources({
             { name = "nvim_lsp" },
             { name = "nvim_lsp_signature_help" },
+            { name = "luasnip" },
             { name = "buffer" },
             { name = "path" }
         })
@@ -50,7 +51,6 @@ end
 
 return {
     "hrsh7th/nvim-cmp",
-    lazy = false,
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",

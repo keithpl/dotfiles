@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Nonsense that I don't want to deal with.
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "Z", "<nop>")
 vim.keymap.set("n", "ZQ", "<nop>")
