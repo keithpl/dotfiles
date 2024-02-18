@@ -1,32 +1,24 @@
-local disable_spdif = {
-    matches = {
-        {
+local function disable_node(node_name)
+    local rule = {
+        matches = {
             {
-                "node.name",
-                "equals",
-                "alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio_3__sink"
+                {
+                    "node.name",
+                    "equals",
+                    node_name
+                }
             }
+        },
+        apply_properties = {
+            ["node.disabled"] = true
         }
-    },
-    apply_properties = {
-        ["node.disabled"] = true
     }
-}
 
-local disable_fpaudio = {
-    matches = {
-        {
-            {
-                "node.name",
-                "equals",
-                "alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio_1__sink"
-            }
-        }
-    },
-    apply_properties = {
-        ["node.disabled"] = true
-    }
-}
+    table.insert(alsa_monitor.rules, rule)
+end
 
-table.insert(alsa_monitor.rules, disable_spdif)
-table.insert(alsa_monitor.rules, disable_fpaudio)
+-- S/PDIF
+disable_node("alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio_3__sink")
+
+-- Front panel audio
+disable_node("alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio_1__sink")
