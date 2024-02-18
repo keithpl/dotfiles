@@ -26,14 +26,14 @@ set $menu wofi --show drun
 
 set $screenshot grim -g "$(slurp -d)" - | swappy -f -
 set $screenrecord screen-record
-set $screenlock swaylock -fri /usr/share/backgrounds/wallhaven-farcry5-lock.png
+set $screenlock swaylock -fri /usr/share/backgrounds/wallhaven-farcry-lock.png
 
 ### Output configuration
 #
 # Default wallpaper
 # (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/wallhaven-farcry5.png fill
+output * bg /usr/share/backgrounds/wallhaven-farcry.jpg fill
 
 #
 # Example configuration:

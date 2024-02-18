@@ -19,7 +19,7 @@ get_next_sink() {
 		local sink_nr
 
 		sink_nr="$(echo "$line" | cut -f 1)"
-		sinks[$ii]="$sink_nr"
+		sinks[ii]="$sink_nr"
 		((ii++))
 	done < <(pactl list sinks short | sort -n)
 

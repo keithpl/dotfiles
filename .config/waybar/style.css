@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: "Cascadia Code";
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     min-height: 0;
     padding: 0 2px;
@@ -14,11 +14,11 @@ window#waybar {
 }
 
 #workspaces {
-    padding: 0 4px;
+    padding: 0 2px;
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 4px;
     background: transparent;
     border-top: 2px solid transparent;
     color: white;
