@@ -13,7 +13,7 @@ export MOZ_DISABLE_RDD_SANDBOX=1
 export LIBVA_DRIVER_NAME="nvidia"
 export NVD_BACKEND="direct"
 
-export WLR_RENDERER="vulkan"
+#export WLR_RENDERER="vulkan"
 export WLR_NO_HARDWARE_CURSORS=1
 
 export GBM_BACKEND="nvidia-drm"
@@ -24,4 +24,5 @@ export __GLX_VENDOR_LIBRARY_NAME="nvidia"
 
 export XWAYLAND_NO_GLAMOR=1
 
-dbus-run-session sway --unsupported-gpu "$@"
+#dbus-run-session sway --unsupported-gpu "$@"
+sway --unsupported-gpu "$@"

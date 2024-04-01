@@ -17,7 +17,8 @@ local lsp_server_configs = {
         cmd = {
             "clangd",
             "--clang-tidy",
-            "--header-insertion-decorators=false"
+            "--header-insertion-decorators=false",
+            "--function-arg-placeholders=false"
         },
         init_options = {
             fallbackFlags = clangd_fallbackflags

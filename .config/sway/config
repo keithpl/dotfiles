@@ -33,7 +33,7 @@ set $screenlock swaylock -fri /usr/share/backgrounds/wallhaven-farcry-lock.png
 # Default wallpaper
 # (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/wallhaven-farcry.jpg fill
+output * bg /usr/share/backgrounds/wallhaven-farcry.png fill
 
 #
 # Example configuration:
