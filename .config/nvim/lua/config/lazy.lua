@@ -6,8 +6,8 @@ if not vim.loop.fs_stat(lazy_path) then
         "git",
         "clone",
         "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
         "--branch=stable",
+        "https://github.com/folke/lazy.nvim.git",
         lazy_path
     })
 end
@@ -16,3 +16,5 @@ vim.opt.rtp:prepend(lazy_path)
 
 lazy = require("lazy")
 lazy.setup("plugins")
+
+vim.keymap.set("n", "<leader>ls", lazy.sync)

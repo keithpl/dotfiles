@@ -6,9 +6,14 @@ local function lualine_config()
             icons_enabled = true,
             theme = "sonokai",
             section_separators = "",
-            component_separators = "|",
-            disabled_filetypes = {
-                "undotree"
+            component_separators = "",
+        },
+        sections = {
+            lualine_x = {
+                "searchcount",
+                "encoding",
+                "fileformat",
+                "filetype"
             }
         }
     })

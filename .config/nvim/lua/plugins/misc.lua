@@ -1,10 +1,11 @@
--- Simple plugins that don't have any advanced configuration or dependencies.
+-- Simple plugins that don't any advanced configuration or dependencies, or I
+-- just like the defaults.
 
 return {
-    { "mbbill/undotree" },
     { "tpope/vim-fugitive" },
+    { "j-hui/fidget.nvim" },
     { "lewis6991/gitsigns.nvim", opts = {} },
     { "numToStr/Comment.nvim", opts = {} },
-    { "j-hui/fidget.nvim", opts = {} },
+    { "akinsho/bufferline.nvim", opts = {} },
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
 }

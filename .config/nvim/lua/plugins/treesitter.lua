@@ -1,27 +1,20 @@
-local treesitter_langs = {
-    "bash",
-    "c",
-    "diff",
-    "gitcommit",
-    "go",
-    "json",
-    "lua",
-    "python",
-    "query",
-    "rust",
-    "toml",
-    "vim",
-    "vimdoc",
-    "yaml"
-}
-
 local function treesitter_config()
     local tsconfigs = require("nvim-treesitter.configs")
+
+    local treesitter_langs = {
+        "bash",
+        "c",
+        "go",
+        "json",
+        "lua",
+        "python",
+        "rust"
+    }
 
     tsconfigs.setup({
         ensure_installed = treesitter_langs,
         auto_install = true,
-        sync_install = false,
+        sync_install = true,
         indent = {
             enable = false
         },
@@ -31,8 +24,8 @@ local function treesitter_config()
         }
     })
 
-    -- Utilize bash syntax highlighting rules for zsh as zsh support is
-    -- severely lacking in tree-sitter at the moment.
+    -- Utilize bash syntax highlighting rules for zsh as zsh support is severly
+    -- lacking in tree-sitter at the moment.
     vim.treesitter.language.register("bash", "zsh")
 end
 
