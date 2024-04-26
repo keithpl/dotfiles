@@ -3,7 +3,7 @@
 
 return {
     { "tpope/vim-fugitive" },
-    { "j-hui/fidget.nvim" },
+    { "j-hui/fidget.nvim", opts = {} },
     { "lewis6991/gitsigns.nvim", opts = {} },
     { "numToStr/Comment.nvim", opts = {} },
     { "akinsho/bufferline.nvim", opts = {} },
