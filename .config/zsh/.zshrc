@@ -15,8 +15,8 @@ source "$ZDOTDIR/keybinds.zsh"
 # Load "history-fzf" function.
 source "$ZDOTDIR/history-fzf.zsh"
 
-# Install zinit plugin manager.
-source "$ZDOTDIR/zinit.zsh"
+# Install my crappy "plugin manager".
+source "$ZDOTDIR/zeal.zsh"
 
 # Completion tweaks.
 zstyle ':completion:*' menu select
@@ -26,14 +26,21 @@ zstyle ':completion:*:default' list-colors "$(dircolors)"
 # Autoload functions.
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
-autoload -Uz promptinit && promptinit
+# autoload -Uz promptinit && promptinit
 
-# Define plugins to be installed by zinit.
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
+zeal install "sindresorhus/pure"
+fpath+=($ZEAL_PLUGIN_DIR/pure)
+autoload -Uz promptinit && promptinit
+prompt pure
+
+zeal install "zsh-users/zsh-syntax-highlighting"
+source "$ZEAL_PLUGIN_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+ZSH_HIGHLIGHT_STYLES[comment]="fg=8,bold"
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
+
+zeal install "zsh-users/zsh-autosuggestions"
+source "$ZEAL_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
 
 # Launch tmux if not already running within tmux, do not spawn tmux
 # when remotely accessing via ssh.
