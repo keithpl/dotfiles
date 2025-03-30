@@ -14,7 +14,7 @@ export LIBVA_DRIVER_NAME="nvidia"
 export NVD_BACKEND="direct"
 
 #export WLR_RENDERER="vulkan"
-export WLR_NO_HARDWARE_CURSORS=1
+#export WLR_NO_HARDWARE_CURSORS=1
 
 export GBM_BACKEND="nvidia-drm"
 

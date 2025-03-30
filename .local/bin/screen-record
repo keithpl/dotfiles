@@ -22,7 +22,7 @@ start_new_recording() {
 		exit 1
 	fi
 
-	wf-recorder -f "$output" -g "$geometry"
+	wf-recorder -r 30 -f "$output" -g "$geometry"
 }
 
 main() {

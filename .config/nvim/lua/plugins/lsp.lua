@@ -2,7 +2,8 @@ local clangd_config = {
     cmd = {
         "clangd",
         "--clang-tidy",
-        "--header-insertion-decorators=false",
+        "--header-insertion=never",
+        "--header-insertion-decorators=true",
         "--function-arg-placeholders=false"
     },
     init_options = {
