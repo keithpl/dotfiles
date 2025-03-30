@@ -1,4 +1,5 @@
 # vi: ft=toml
+[general]
 working_directory = "None"
 live_config_reload = true
 ipc_socket = true
