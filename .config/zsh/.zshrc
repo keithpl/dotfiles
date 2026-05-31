@@ -12,21 +12,11 @@ source "$ZDOTDIR/setopt.zsh"
 # Load zsh keyboard bindings.
 source "$ZDOTDIR/keybinds.zsh"
 
-# Load "history-fzf" function.
-source "$ZDOTDIR/history-fzf.zsh"
-
 # Install my crappy "plugin manager".
 source "$ZDOTDIR/zeal.zsh"
 
-# Completion tweaks.
-zstyle ':completion:*' menu select
-zstyle ':completion:*' squeeze-slashes true
-zstyle ':completion:*:default' list-colors "$(dircolors)"
-
-# Autoload functions.
-autoload -Uz compinit && compinit
-autoload -Uz colors && colors
-# autoload -Uz promptinit && promptinit
+# Load fzf keybindings.
+source /usr/share/fzf/key-bindings.zsh
 
 zeal install "sindresorhus/pure"
 fpath+=($ZEAL_PLUGIN_DIR/pure)
@@ -41,6 +31,13 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets)
 zeal install "zsh-users/zsh-autosuggestions"
 source "$ZEAL_PLUGIN_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# Completion tweaks.
+zstyle ':completion:*' menu select
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*:default' list-colors "$(dircolors)"
+
+# Autoload functions.
+autoload -Uz compinit && compinit
 
 # Launch tmux if not already running within tmux, do not spawn tmux
 # when remotely accessing via ssh.

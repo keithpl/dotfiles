@@ -66,12 +66,16 @@ local function lsp_config()
 
     local function lsp_server_configure(server, config)
         config.capabilities = capabilities
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+        --lspconfig[server].setup(config)
     end
 
     for name, config in pairs(lsp_server_configs) do
         lsp_server_configure(name, config)
     end
+
+    vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
 end
 
 return {

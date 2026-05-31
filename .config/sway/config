@@ -44,6 +44,9 @@ output * bg /usr/share/backgrounds/wallhaven-farcry.png fill
 output DP-1 mode 2560x1440@143.998Hz position 0,0
 output DP-2 mode 2560x1440@143.998Hz position 2560,0
 
+output * allow_tearing yes
+output * max_render_time off
+
 workspace 1 output DP-1
 workspace 2 output DP-2
 
@@ -64,9 +67,7 @@ exec swayidle -w                                \
     before-sleep "$screenlock"                  \
     timeout 600 "$screenlock"                   \
     timeout 660 "swaymsg 'output * power off'"  \
-    resume "swaymsg 'output DP-1 power on';     \
-            sleep 0.350;                        \
-            swaymsg 'output DP-2 power on'"
+    resume "swaymsg 'output * power on'"
 
 ### Input configuration
 #
