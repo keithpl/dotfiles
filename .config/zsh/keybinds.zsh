@@ -25,11 +25,6 @@ bindkey "${terminfo[kLFT5]}" emacs-backward-word
 # "control-right"
 bindkey "${terminfo[kRIT5]}" emacs-forward-word
 
-# Search history with fzf, defined in "$ZDOTDIR/history-fzf.zsh"
-autoload -z history-fzf
-zle -N history-fzf
-bindkey '^R' history-fzf
-
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
