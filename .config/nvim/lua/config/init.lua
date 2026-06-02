@@ -1,5 +1,0 @@
-require("config.options")
-require("config.autocmd")
-require("config.filetype")
-require("config.keymap")
-require("config.lazy")

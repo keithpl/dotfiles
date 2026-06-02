@@ -1,7 +1,0 @@
-# Prevent myself from being a moron.
-id_dsa
-id_ecdsa
-id_ed25519
-id_rsa
-
-.DS_Store
