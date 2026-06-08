@@ -34,6 +34,12 @@ set $menu rofi -show drun
 # Preferred screen locker.
 set $screenlock swaylock -f
 
+# Preferred screenshot utility.
+set $screenshot_output \
+    grim -g "$(slurp -o -r)" -t ppm - | satty -f - --fullscreen
+set $screenshot_area \
+    grim -g "$(slurp -d)" -t ppm - | satty -f - --floating-hack
+
 # Configure output resolution, refresh rate, and position.
 # Output names, and their supported modes, can be found by
 # running: `swaymsg -t get_outputs`.
@@ -83,6 +89,12 @@ bindsym $mod+Shift+q kill
 
 # Lock the screen.
 bindsym $mod+Control+q exec $screenlock
+
+# Take a screenshot of an output.
+bindsym Print exec $screenshot_output
+
+# Take a screenshot of a selected area.
+bindsym $mod+Shift+s exec $screenshot_area
 
 # Reload sway configuration.
 bindsym $mod+Shift+c reload
