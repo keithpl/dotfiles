@@ -31,11 +31,17 @@ set $term alacritty
 # Preferred application launcher.
 set $menu rofi -show drun
 
+# Preferred screen locker.
+set $screenlock swaylock -f
+
 # Configure output resolution, refresh rate, and position.
 # Output names, and their supported modes, can be found by
 # running: `swaymsg -t get_outputs`.
 output DP-1 mode 2560x1440@143.998Hz pos 0 0
 output DP-2 mode 2560x1440@143.998Hz pos 2560 0
+
+# Set wallpaper for all outputs.
+output * bg /usr/share/backgrounds/wallhaven-farcry.png fill
 
 # Specifically pin workspaces to outputs.
 workspace 1 output DP-1
@@ -48,8 +54,8 @@ workspace 2 output DP-2
 # 2. Turn off displays after another 60 seconds of inactivity.
 # 3. Turn on displays when resumed.
 exec swayidle -w                                \
-    before-sleep "swaylock"                     \
-    timeout 600 "swaylock"                      \
+    before-sleep "$screenlock"                  \
+    timeout 600 "$screenlock"                   \
     timeout 660 "swaymsg 'output * power off'"  \
     resume "swaymsg 'output * power on'"
 
@@ -76,12 +82,29 @@ bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 
 # Lock the screen.
-# `-f` is supplied here to tell swaylock to daemonize, sway does not
-# need to wait for swaylock to complete.
-bindsym $mod+Control+q exec swaylock -f
+bindsym $mod+Control+q exec $screenlock
 
 # Reload sway configuration.
 bindsym $mod+Shift+c reload
+
+# Disable borders on tiled windows.
+default_border none
+
+# Do not move the mouse when changing focus.
+mouse_warping none
+
+# Do not automatically change focus when moving the mouse to another
+# container.
+focus_follows_mouse no
+
+# Only enable gaps when the workspace has more than one child.
+smart_gaps on
+
+# Set gap size around windows.
+gaps inner 10
+
+# Set gap size around workspaces.
+gaps outer 0
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize floating windows by holding down $mod and right mouse button.
