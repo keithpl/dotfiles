@@ -68,7 +68,7 @@ exec swayidle -w                                \
 # Disable mouse acceleration.
 input "type:pointer" {
     accel_profile flat
-    pointer_accel 0.30
+    pointer_accel 0.25
 }
 
 # Set key repeat rate and delay. Disable Caps Lock.
@@ -230,6 +230,10 @@ bindsym --locked XF86AudioStop exec playerctl stop
 # Adjust brightness via brightnessctl.
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+# Load GTK interface settings on startup/reload.
+exec_always dconf load /org/gnome/desktop/interface/ < \
+    $HOME/.config/dconf/desktop-interface.ini
 
 # Use waybar.
 bar {
