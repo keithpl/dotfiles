@@ -11,5 +11,6 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export LIBVA_DRIVER_NAME="nvidia"
 export NVD_BACKEND="direct"
 export __GLX_VENDOR_LIBRARY_NAME="nvidia"
+export CUDA_CACHE_PATH="$HOME/.cache/nvidia/ComputeCache"
 
 exec sway --unsupported-gpu "$@"
