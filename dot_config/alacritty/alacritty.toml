@@ -1,0 +1,66 @@
+[window]
+decorations = "None"
+opacity = 0.80
+
+[font]
+size = 12
+
+[font.normal]
+family = "Cascadia Code"
+style = "Medium"
+
+[colors.primary]
+background = "#000000"
+foreground = "#eaeaea"
+
+[colors.cursor]
+cursor = "#eaeaea"
+text = "#000000"
+
+[colors.normal]
+black = "#2e3436"
+red = "#cc0000"
+green = "#4e9a06"
+yellow = "#c4a000"
+blue = "#3465a4"
+magenta = "#75507b"
+cyan = "#06989a"
+white = "#d3d7cf"
+
+[colors.bright]
+black = "#555753"
+red = "#ef2929"
+green = "#8ae234"
+yellow = "#fce94f"
+blue = "#729fcf"
+magenta = "#ad7fa8"
+cyan = "#34e2e2"
+white = "#ffffff"
+
+[keyboard]
+bindings = [
+    # tmux: create window
+    # Alt+T => Ctrl-b, c
+    { key = "T",        mods = "Alt",   chars = "\u0002c"   },
+
+    # tmux: jump to window [0-9]
+    # Alt+[0-9] => Ctrl-b, [0-9]
+    { key = "0",        mods = "Alt",   chars = "\u00020"   },
+    { key = "1",        mods = "Alt",   chars = "\u00021"   },
+    { key = "2",        mods = "Alt",   chars = "\u00022"   },
+    { key = "3",        mods = "Alt",   chars = "\u00023"   },
+    { key = "4",        mods = "Alt",   chars = "\u00024"   },
+    { key = "5",        mods = "Alt",   chars = "\u00025"   },
+    { key = "6",        mods = "Alt",   chars = "\u00026"   },
+    { key = "7",        mods = "Alt",   chars = "\u00027"   },
+    { key = "8",        mods = "Alt",   chars = "\u00028"   },
+    { key = "9",        mods = "Alt",   chars = "\u00029"   },
+
+    # tmux: jump to previous window
+    # Alt+Left => Ctrl-b, p
+    { key = "Left",     mods = "Alt",   chars = "\u0002p"   },
+
+    # tmux: jump to next window
+    # Alt+Right => Ctrl-b, n
+    { key = "Right",    mods = "Alt",   chars = "\u0002n"   }
+]
