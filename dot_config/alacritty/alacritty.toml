@@ -41,26 +41,52 @@ white = "#ffffff"
 bindings = [
     # tmux: create window
     # Alt+T => Ctrl-b, c
-    { key = "T",        mods = "Alt",   chars = "\u0002c"   },
+    { key = "T", mods = "Alt", chars = "\u0002c" },
 
     # tmux: jump to window [0-9]
     # Alt+[0-9] => Ctrl-b, [0-9]
-    { key = "0",        mods = "Alt",   chars = "\u00020"   },
-    { key = "1",        mods = "Alt",   chars = "\u00021"   },
-    { key = "2",        mods = "Alt",   chars = "\u00022"   },
-    { key = "3",        mods = "Alt",   chars = "\u00023"   },
-    { key = "4",        mods = "Alt",   chars = "\u00024"   },
-    { key = "5",        mods = "Alt",   chars = "\u00025"   },
-    { key = "6",        mods = "Alt",   chars = "\u00026"   },
-    { key = "7",        mods = "Alt",   chars = "\u00027"   },
-    { key = "8",        mods = "Alt",   chars = "\u00028"   },
-    { key = "9",        mods = "Alt",   chars = "\u00029"   },
+    { key = "0", mods = "Alt", chars = "\u00020" },
+    { key = "1", mods = "Alt", chars = "\u00021" },
+    { key = "2", mods = "Alt", chars = "\u00022" },
+    { key = "3", mods = "Alt", chars = "\u00023" },
+    { key = "4", mods = "Alt", chars = "\u00024" },
+    { key = "5", mods = "Alt", chars = "\u00025" },
+    { key = "6", mods = "Alt", chars = "\u00026" },
+    { key = "7", mods = "Alt", chars = "\u00027" },
+    { key = "8", mods = "Alt", chars = "\u00028" },
+    { key = "9", mods = "Alt", chars = "\u00029" },
 
     # tmux: jump to previous window
     # Alt+Left => Ctrl-b, p
-    { key = "Left",     mods = "Alt",   chars = "\u0002p"   },
+    { key = "Left", mods = "Alt", chars = "\u0002p" },
 
     # tmux: jump to next window
     # Alt+Right => Ctrl-b, n
-    { key = "Right",    mods = "Alt",   chars = "\u0002n"   }
+    { key = "Right", mods = "Alt", chars = "\u0002n" },
+
+    # tmux: split pane vertically (left and right)
+    # Alt+D => Ctrl-b, %
+    { key = "D", mods = "Alt", chars = "\u0002%" },
+
+    # tmux: split pane horizontally (up and down)
+    # Alt+Shift+D => Ctrl-b, "
+    { key = "D", mods = "Alt|Shift", chars = "\u0002\"" },
+
+    # tmux: cycle through pane layouts
+    # Alt+Space => Ctrl-b, space
+    { key = "Space", mods = "Alt", chars = "\u0002 " },
+
+    # tmux: switch to pane in direction
+    # Alt+Shift+[Arrow key] => Ctrl-b, [Arrow key]
+    { key = "Up", mods = "Alt|Shift", chars = "\u0002\u001b[A" },
+    { key = "Down", mods = "Alt|Shift", chars = "\u0002\u001b[B" },
+    { key = "Right", mods = "Alt|Shift", chars = "\u0002\u001b[C" },
+    { key = "Left", mods = "Alt|Shift", chars = "\u0002\u001b[D" },
+
+    # tmux: resize pane in direction
+    # Ctrl+Alt+[Arrow key] => Ctrl-b, Ctrl+[Arrow key]
+    { key = "Up", mods = "Control|Alt", chars = "\u0002\u001b[1;5A" },
+    { key = "Down", mods = "Control|Alt", chars = "\u0002\u001b[1;5B" },
+    { key = "Right", mods = "Control|Alt", chars = "\u0002\u001b[1;5C" },
+    { key = "Left", mods = "Control|Alt", chars = "\u0002\u001b[1;5D" }
 ]
