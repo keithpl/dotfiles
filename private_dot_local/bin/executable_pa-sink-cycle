@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+sink_get_default() {
+	pactl get-default-sink
+}
+
+sink_set_default() {
+	pactl set-default-sink "$@"
+}
+
+sink_get_all() {
+	pactl list short sinks | cut -f 2 | sort
+}
+
+sink_get_next() {
+	local sinks=()
+	local sinks_count
+	local default_sink
+
+	default_sink="$(sink_get_default)"
+
+	readarray -t sinks < <(sink_get_all)
+	sinks_count="${#sinks[@]}"
+	if [[ "$sinks_count" -eq 0 ]]; then
+		return 1
+	fi
+
+	# Fall back to a known valid sink if the default cannot be
+	# determined.
+	if [[ -z "$default_sink" ]]; then
+		echo "${sinks[0]}"
+		return 0
+	fi
+
+	for pos in "${!sinks[@]}"; do
+		if [[ "${sinks[pos]}" == "$default_sink" ]]; then
+			local next_pos="$(( (pos + 1) % sinks_count ))"
+
+			echo "${sinks[next_pos]}"
+			return 0
+		fi
+	done
+
+	# Fall back to a known valid sink if the current default
+	# cannot be found in the list of valid sinks.
+	echo "${sinks[0]}"
+	return 0
+}
+
+main() {
+	local next
+
+	next="$(sink_get_next)"
+	if [[ -n "$next" ]]; then
+		sink_set_default "$next"
+	fi
+}
+
+main "$@"
