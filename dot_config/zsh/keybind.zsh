@@ -22,6 +22,9 @@ bindkey "${terminfo[kend]}" end-of-line
 # "control-space"
 bindkey "^@" autosuggest-accept
 
+# "back-tab" or "shift-tab"
+bindkey "${terminfo[kcbt]}" reverse-menu-complete
+
 # "control-left"
 bindkey "${terminfo[kLFT5]}" emacs-backward-word
 
