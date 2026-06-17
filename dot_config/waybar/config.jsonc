@@ -1,0 +1,83 @@
+// vi: ft=jsonc sw=4 ts=4 et
+{
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+
+    "modules-center": [ "sway/window" ],
+
+    "modules-right": [
+        "temperature",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "clock"
+    ],
+
+    "sway/workspaces": {
+        "all-outputs": true,
+        "disable-scroll": true
+    },
+
+    "sway/window": {
+        "max-length": 64
+    },
+
+    "temperature": {
+        "interval": 2,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": [ "", "", "", "", "" ],
+        "thermal-zone": 1,
+        "critical-threshold": 75
+    },
+
+    "cpu": {
+        "interval": 2,
+        "format": " {usage}%"
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip-format": "used:  {used}GiB\ntotal: {total}GiB",
+        "interval": 2
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "scroll-step": 1,
+        "max-volume": 200,
+
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-middle": "~/.local/bin/pa-sink-cycle",
+        "on-click-right": "pavucontrol -t 3",
+
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"],
+            "default-muted": "󰖁"
+        }
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%a %b %d %I:%M:%OS %p}",
+        "format-alt": "{:%F %H:%M:%OS %Z}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "mode-mon-col": 3,
+            "format": {
+                "months": "<span color='#729fcf'><b>{}</b></span>",
+                "weeks": "<span color='#555753'><b>W{}</b></span>",
+                "weekdays": "<span color='#c4a000'><b>{}</b></span>",
+                "days": "<span color='#d3d7cf'><b>{}</b></span>",
+                "today": "<span color='#4e9a06'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    }
+}
