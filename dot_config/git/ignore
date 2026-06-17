@@ -1,0 +1,13 @@
+# Make an effort to prevent stupidity, even my own.
+id_dsa
+id_ecdsa
+id_ed25519
+id_rsa
+
+# OS litter.
+.DS_Store
+
+# Editors.
+*.swp
+*.swo
+*~
