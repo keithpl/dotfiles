@@ -45,8 +45,11 @@
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
+        "format-muted": "{icon} Muted",
         "scroll-step": 1,
         "max-volume": 200,
+
+        "tooltip-format": "[{icon} {volume}%] {desc}",
 
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-middle": "~/.local/bin/pa-sink-cycle",
