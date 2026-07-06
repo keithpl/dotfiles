@@ -10,6 +10,9 @@ export LESSHISTFILE="-"
 # Use nvim as the pager for man.
 export MANPAGER="nvim +Man!"
 
+# GPG requires the exact TTY path to draw passphrase prompts.
+export GPG_TTY="$TTY"
+
 # Relocate data to XDG directories for tools that don't respect XDG
 # by default.
 export GOPATH="$XDG_DATA_HOME/go"
