@@ -13,4 +13,11 @@ export NVD_BACKEND="direct"
 export __GLX_VENDOR_LIBRARY_NAME="nvidia"
 export CUDA_CACHE_PATH="$HOME/.cache/nvidia/ComputeCache"
 
+# Don't put the gpu in P0 just because there's a cuda workload.
+# Might remove once libva-nvidia-driver is no longer needed.
+export CUDA_DISABLE_PERF_BOOST=1
+
+# Required until firefox supports vulkan video decoding (v153)
+export MOZ_DISABLE_RDD_SANDBOX=1
+
 exec sway --unsupported-gpu "$@"
